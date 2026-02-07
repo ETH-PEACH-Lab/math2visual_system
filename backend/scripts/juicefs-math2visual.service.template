@@ -1,0 +1,24 @@
+[Unit]
+Description=JuiceFS mount for Math2Visual
+Documentation=https://github.com/eth-lre/math2visual
+After=network-online.target postgresql.service
+Wants=network-online.target
+Requires=postgresql.service
+
+[Service]
+Type=forking
+User={{MATH2VISUAL_USER}}
+Group={{MATH2VISUAL_GROUP}}
+Environment=HOME={{MATH2VISUAL_HOME}}
+WorkingDirectory={{MATH2VISUAL_BACKEND_DIR}}
+EnvironmentFile={{MATH2VISUAL_BACKEND_DIR}}/.env
+ExecStartPre=/bin/sleep 5
+ExecStart={{MATH2VISUAL_BACKEND_DIR}}/scripts/mount_juicefs.sh
+ExecStop=/bin/fusermount -u {{JUICEFS_MOUNT_POINT}}
+TimeoutStartSec=60
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

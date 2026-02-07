@@ -1,0 +1,198 @@
+{
+  "common": {
+    "generate": "Erzeugen",
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "cancel": "Abbrechen",
+    "cancelGeneration": "Erzeugung abbrechen",
+    "confirm": "Bestätigen",
+    "discard": "Verwerfen",
+    "upload": "Hochladen",
+    "download": "Herunterladen",
+    "close": "Schließen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "search": "Suchen"
+  },
+  "forms": {
+    "mwpPlaceholder": "Geben Sie Ihre Mathe-Textaufgabe ein…",
+    "formulaPlaceholder": "2+2 (z.B. anstatt 2x2 als Struktur)",
+    "hintPlaceholder": "Sieht nicht wie erwartet aus? Dann fügen Sie hier weitere Hinweise zu den Beziehungen zwischen den visuellen Elementen hinzu ...",
+    "mwpRequired": "Geben Sie eine Mathe-Textaufgabe ein.",
+    "mwpTooLong": "Mathe-Textaufgabe ist zu lang (max. {{max}} Zeichen).",
+    "dslRequired": "Leere visuelle Sprache bereitgestellt.",
+    "dslTooLong": "Visuelle Sprache ist zu lang (max. {{max}} Zeichen).",
+    "formulaTooLong": "Formel ist zu lang (max. {{max}} Zeichen).",
+    "hintTooLong": "Hinweis ist zu lang (max. {{max}} Zeichen).",
+    "messageTooLong": "Nachricht ist zu lang (max. {{max}} Zeichen).",
+    "generateButton": "Erzeugen",
+    "regenerateButton": "Erneut erzeugen",
+    "visualLanguageTitle": "Visuelle Sprache",
+    "mwpLabel": "Mathe-Textaufgabe:",
+    "formulaLabel": "Optionale Formel:",
+    "hintLabel": "Optionale Hinweise:"
+  },
+  "visualization": {
+    "formal": "Formal",
+    "intuitive": "Intuitiv",
+    "formalVisualization": "Formale Visualisierung",
+    "intuitiveVisualization": "Intuitive Visualisierung",
+    "parseError": "Parse-Fehler",
+    "parseErrorMessage": "Visuelle Sprache konnte nicht geparst werden.",
+    "syntaxError": "Syntaxfehler in der visuellen Sprache. Bitte überprüfen Sie Ihre Eingabe.",
+    "generationError": "Visualisierung konnte nicht generiert werden. Ein erneuter Versuch könnte helfen.",
+    "formalError": "Formale Visualisierung konnte nicht generiert werden. Ein erneuter Versuch könnte helfen.",
+    "intuitiveError": "Intuitive Visualisierung konnte nicht erzeugt werden. Ein erneuter Versuch könnte helfen.",
+    "tabs": {
+      "formalVisual": "Formale Visualisierung",
+      "intuitiveVisual": "Intuitive Visualisierung",
+      "missingSVG": "Fehlendes SVG"
+    }
+  },
+  "errors": {
+    "networkError": "Netzwerkfehler: Verbindung zum Server konnte nicht hergestellt werden",
+    "unknownError": "Ein unbekannter Fehler ist aufgetreten",
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten",
+    "apiError": "Visuelle Sprache wurde nicht von der KI erhalten. Bitte versuchen Sie es erneut.",
+    "validationError": "Validierungsfehler"
+  },
+  "svg": {
+    "missingEntities": "Wählen Sie die Entität mit fehlendem SVG aus, für welche Sie ein Icon hochladen oder erzeugen wollen:",
+    "missingFileTitle": "Fehlende SVG-Datei",
+    "missingDescription": "SVG-Datei, die für die Erzeugung der Visualisierungen erforderlich ist, fehlt im Dataset. Es wurde versucht, die am besten passende Darstellung im Datenset zu finden und auszuwählen.",
+    "uploading": "Wird hochgeladen...",
+    "generating": "Icon wird generiert...",
+    "selectEntity": "Wählen Sie die fehlende Entität aus, um ein Icon hochzuladen oder zu erzeugen:",
+    "confirmGenerated": "Generiertes bestätigen",
+    "discardGenerated": "Generiertes verwerfen",
+    "dragAndDrop": "Ziehen Sie Ihre SVG-Datei hierher",
+    "findOnline": "SVGs online finden:",
+    "generatePopup": {
+      "generating": "Symbol \"{{entityType}}\" wird generiert...",
+      "confirmInstruction": "Doppelklick / 'Enter' zum Bestätigen"
+    },
+    "uploadPopup": {
+      "selectFileAndName": "Bitte wählen Sie eine Datei aus und geben Sie einen Namen ein",
+      "chooseFile": "SVG-Datei auswählen",
+      "enterName": "Name eingeben",
+      "viewInNewTab": "{{filename}} in neuem Tab anzeigen"
+    },
+    "searchPopup": {
+      "searchError": "SVG-Dateien konnten nicht durchsucht werden",
+      "selectError": "Datei konnte nicht ausgewählt werden",
+      "searching": "Suche..."
+    },
+    "allFilesUploaded": "Alle fehlenden Dateien wurden hochgeladen!",
+    "fileUploadedSuccessfully": "SVG-Datei wurde erfolgreich hochgeladen",
+    "uploadSucceededRegenerationFailed": "Upload erfolgreich, aber erneute Erzeugung fehlgeschlagen",
+    "failedToRegenerateVisualizations": "Visualisierungen konnten nicht regeneriert werden",
+    "uploadFailed": "Upload fehlgeschlagen",
+    "connectionError": "Verbindungsfehler",
+    "uploadTimeout": "Upload-Zeitüberschreitung",
+    "fileTooLarge": "Datei zu groß",
+    "fileTooLargeMaxSize": "Datei zu groß. Maximale Größe ist 5MB.",
+    "securityCheckFailed": "Sicherheitsprüfung fehlgeschlagen",
+    "pleaseSelectSVGFile": "Bitte wählen Sie eine SVG-Datei aus",
+    "processing": "Wird verarbeitet...",
+    "generationCancelled": "Erzeugung abgebrochen",
+    "generationFailed": "Erzeugung fehlgeschlagen",
+    "addingToDataset": "SVG wird zum Dataset hinzugefügt...",
+    "generatedAndAddedToDataset": "SVG wurde erzeugt und zum Dataset hinzugefügt!",
+    "generationSucceededRegenerationFailed": "Erzeugung erfolgreich, aber erneute Erzeugung fehlgeschlagen",
+    "failedToAddSVG": "SVG konnte nicht hinzugefügt werden",
+    "noDSLOrPathContext": "Keine DSL- oder Pfadkontext verfügbar",
+    "updatingAndRegenerating": "SVG wird aktualisiert und Visualisierungen werden regeneriert...",
+    "successfullyUpdatedSVG": "SVG wurde erfolgreich aktualisiert",
+    "failedToUpdateSVG": "SVG konnte nicht aktualisiert werden"
+  },
+  "language": {
+    "select": "Sprache auswählen",
+    "english": "Englisch",
+    "german": "Deutsch"
+  },
+  "theme": {
+    "light": "Hellmodus",
+    "dark": "Dunkelmodus"
+  },
+  "app": {
+    "subtitle": "Mathe-Textaufgaben auf pädagogisch bedeutsame Weise durch KI visualisieren",
+    "noVisualLanguageForRegeneration": "Keine visuelle Sprache für Wiedererzeugung verfügbar",
+    "regeneratingVisualizations": "Visualisierungen werden wiedererzeugt...",
+    "visualizationsGeneratedSuccessfully": "Visualisierungen wurden erfolgreich erzeugt",
+    "anotherSVGFileStillMissing": "Eine weitere SVG-Datei fehlt noch",
+    "missing": "Fehlt: {{entity}}",
+    "generationFailed": "Generierung fehlgeschlagen",
+    "unableToGenerateVisualizations": "Visualisierungen konnten nicht erzeugt werden",
+    "failedToRegenerateVisualizations": "Visualisierungen konnten nicht erzeugt werden"
+  },
+  "popups": {
+    "name": {
+      "placeholder": "Name",
+      "updated": "Name wurde auf \"{{value}}\" aktualisiert",
+      "deleted": "Name wurde gelöscht",
+      "updateError": "Name konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut."
+    },
+    "quantity": {
+      "placeholder": "Menge",
+      "positiveInteger": "Bitte geben Sie eine positive ganze Zahl ein",
+      "invalidInteger": "Bitte geben Sie eine gültige positive ganze Zahl ein",
+      "updated": "Entitätsmenge wurde auf {{quantity}} aktualisiert",
+      "updateError": "Entitätsmenge konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut."
+    }
+  },
+  "download": {
+    "preparing": "{{format}}-Download wird vorbereitet...",
+    "success": "{{format}}-Datei wurde erfolgreich heruntergeladen!",
+    "savedToFolder": "{{title}} wurde in Ihren Downloads-Ordner gespeichert.",
+    "error": "{{format}}-Datei konnte nicht heruntergeladen werden",
+    "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten."
+  },
+  "landing": {
+    "roleQuestion": "Was sind Sie?",
+    "modeQuestion": "Bitte Modus auswählen:",
+    "student": "Schüler",
+    "teacher": "Lehrer"
+  },
+  "tutor": {
+    "enterMwpLabel": "Starte mit deiner Mathe-Textaufgabe",
+    "enterMwpPlaceholder": "Gib deine Mathe-Textaufgabe ein...",
+    "startSession": "Tutor-Session starten",
+    "send": "Senden",
+    "sendPlaceholder": "Antworte dem Tutor...",
+    "sessionNotFound": "Session nicht gefunden. Bitte neu starten.",
+    "visualOpenLarge": "Visualisierung vergrößert anzeigen",
+    "visualClosePreview": "Großansicht schließen",
+    "voiceStart": "Spracheingabe",
+    "voiceStop": "Stopp",
+    "voiceError": "Spracheingabe fehlgeschlagen. Bitte erneut versuchen.",
+    "streamingError": "Streaming fehlgeschlagen. Bitte erneut versuchen.",
+    "speechOn": "Vorlesen an",
+    "speechOff": "Vorlesen aus",
+    "speechNotSupported": "Sprachausgabe nicht unterstützt",
+    "speechError": "Sprachausgabe fehlgeschlagen. Bitte erneut versuchen.",
+    "initialMessage": "Hallo! Ich bin hier, um dir bei deinen Mathe-Textaufgaben zu helfen. Bitte teile ein Problem mit, an dem du arbeiten möchtest."
+  },
+  "chatgpt": {
+    "title": "ChatGPT",
+    "startConversation": "Starte eine Unterhaltung mit ChatGPT...",
+    "inputPlaceholder": "Gib deine Nachricht an ChatGPT ein...",
+    "downloadImage": "Bild herunterladen",
+    "imageAlt": "Bild {{number}}",
+    "failedToFetchImage": "Bild konnte nicht abgerufen werden",
+    "failedToStreamResponse": "ChatGPT-Antwort konnte nicht gestreamt werden",
+    "streamingNotSupported": "Streaming wird in diesem Browser nicht unterstützt.",
+    "failedToStartSession": "ChatGPT-Session konnte nicht gestartet werden",
+    "failedToFetchImageViaProxy": "Bild konnte nicht über Proxy abgerufen werden",
+    "failedToStartSessionError": "ChatGPT-Session konnte nicht gestartet werden.",
+    "missingSessionId": "Session-ID fehlt.",
+    "pleaseProvideMessage": "Bitte geben Sie eine Nachricht ein.",
+    "messageTooLong": "Nachricht ist zu lang (max. {{max}} Zeichen).",
+    "sessionNotFoundOrExpired": "Session nicht gefunden oder abgelaufen.",
+    "sessionNotFound": "Session nicht gefunden.",
+    "missingImageUrl": "Bild-URL fehlt.",
+    "failedToFetchImageError": "Bild konnte nicht abgerufen werden: {{error}}",
+    "failedToProxyImage": "Bild konnte nicht über Proxy abgerufen werden."
+  }
+}
+

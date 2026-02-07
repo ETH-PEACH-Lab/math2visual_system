@@ -1,0 +1,7 @@
+.env
+__pycache__/
+storage/output/*
+storage/analytics/*
+.cursor/*
+storage/models/*
+*.safetensors

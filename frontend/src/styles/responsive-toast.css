@@ -1,0 +1,195 @@
+/* Responsive toast styling for large TV screens and all screen sizes */
+
+/* Base responsive toast sizing */
+.toast-responsive-size {
+  font-size: clamp(0.875rem, calc(0.8vw + 0.8vh), 1.5rem) !important;
+  padding: clamp(0.75rem, calc(0.5vw + 0.5vh), 1.5rem) !important;
+  border-radius: clamp(0.375rem, calc(0.2vw + 0.2vh), 0.75rem) !important;
+  min-height: clamp(2.5rem, calc(1.5vw + 1.5vh), 4rem) !important;
+  max-width: clamp(20rem, calc(25vw + 10vh), 40rem) !important;
+  width: clamp(20rem, calc(30vw + 15vh), 50rem) !important;
+}
+
+/* Responsive toast content sizing */
+.toast-content-responsive {
+  font-size: clamp(0.875rem, calc(0.8vw + 0.8vh), 1.5rem) !important;
+  line-height: 1.4 !important;
+}
+
+/* Responsive toast icon sizing */
+.toast-icon-responsive {
+  width: clamp(1rem, calc(0.8vw + 0.8vh), 2rem) !important;
+  height: clamp(1rem, calc(0.8vw + 0.8vh), 2rem) !important;
+}
+
+/* Responsive toast button sizing */
+.toast-button-responsive {
+  font-size: clamp(0.75rem, calc(0.7vw + 0.7vh), 1.25rem) !important;
+  padding: clamp(0.25rem, calc(0.2vw + 0.2vh), 0.5rem) clamp(0.5rem, calc(0.4vw + 0.4vh), 1rem) !important;
+  border-radius: clamp(0.25rem, calc(0.1vw + 0.1vh), 0.5rem) !important;
+}
+
+/* Enhanced sizing for very large screens (TVs, large monitors) */
+@media (min-width: 2560px) {
+  .toast-responsive-size {
+    font-size: clamp(1.25rem, calc(1.2vw + 1.2vh), 2.5rem) !important;
+    padding: clamp(1rem, calc(0.8vw + 0.8vh), 2rem) !important;
+    border-radius: clamp(0.5rem, calc(0.3vw + 0.3vh), 1rem) !important;
+    min-height: clamp(3rem, calc(2vw + 2vh), 5rem) !important;
+    max-width: clamp(30rem, calc(35vw + 15vh), 60rem) !important;
+    width: clamp(30rem, calc(40vw + 20vh), 80rem) !important;
+  }
+  
+  .toast-content-responsive {
+    font-size: clamp(1.25rem, calc(1.2vw + 1.2vh), 2.5rem) !important;
+    line-height: 1.3 !important;
+  }
+  
+  .toast-icon-responsive {
+    width: clamp(2rem, calc(1.8vw + 1.8vh), 4rem) !important;
+    height: clamp(2rem, calc(1.8vw + 1.8vh), 4rem) !important;
+  }
+  
+  .toast-button-responsive {
+    font-size: clamp(1rem, calc(1vw + 1vh), 2rem) !important;
+    padding: clamp(0.5rem, calc(0.4vw + 0.4vh), 1rem) clamp(1rem, calc(0.8vw + 0.8vh), 2rem) !important;
+    border-radius: clamp(0.375rem, calc(0.2vw + 0.2vh), 0.75rem) !important;
+  }
+}
+
+/* Ultra-wide screen optimizations for very large TVs */
+@media (min-width: 3840px) {
+  .toast-responsive-size {
+    font-size: clamp(1.5rem, calc(1.5vw + 1.5vh), 3rem) !important;
+    padding: clamp(1.25rem, calc(1vw + 1vh), 2.5rem) !important;
+    border-radius: clamp(0.75rem, calc(0.4vw + 0.4vh), 1.25rem) !important;
+    min-height: clamp(4rem, calc(2.5vw + 2.5vh), 6rem) !important;
+    max-width: clamp(40rem, calc(45vw + 20vh), 80rem) !important;
+    width: clamp(40rem, calc(50vw + 25vh), 100rem) !important;
+  }
+  
+  .toast-content-responsive {
+    font-size: clamp(1.5rem, calc(1.5vw + 1.5vh), 3rem) !important;
+    line-height: 1.25 !important;
+  }
+  
+  .toast-icon-responsive {
+    width: clamp(2.5rem, calc(2.2vw + 2.2vh), 5rem) !important;
+    height: clamp(2.5rem, calc(2.2vw + 2.2vh), 5rem) !important;
+  }
+  
+  .toast-button-responsive {
+    font-size: clamp(1.25rem, calc(1.2vw + 1.2vh), 2.5rem) !important;
+    padding: clamp(0.75rem, calc(0.6vw + 0.6vh), 1.5rem) clamp(1.5rem, calc(1.2vw + 1.2vh), 3rem) !important;
+    border-radius: clamp(0.5rem, calc(0.3vw + 0.3vh), 1rem) !important;
+  }
+}
+
+/* Extra large screens (8K and beyond) */
+@media (min-width: 5120px) {
+  .toast-icon-responsive {
+    width: clamp(3rem, calc(2.5vw + 2.5vh), 6rem) !important;
+    height: clamp(3rem, calc(2.5vw + 2.5vh), 6rem) !important;
+  }
+}
+
+/* Sonner toast component specific styling */
+.toaster {
+  position: fixed !important;
+  z-index: 9999 !important;
+}
+
+/* Direct Sonner targeting for better specificity */
+[data-sonner-toast] {
+  font-size: clamp(0.875rem, calc(0.8vw + 0.8vh), 1.5rem) !important;
+  padding: clamp(0.75rem, calc(0.5vw + 0.5vh), 1.5rem) !important;
+  border-radius: clamp(0.375rem, calc(0.2vw + 0.2vh), 0.75rem) !important;
+  min-height: clamp(2.5rem, calc(1.5vw + 1.5vh), 4rem) !important;
+  max-width: clamp(20rem, calc(25vw + 10vh), 40rem) !important;
+  width: clamp(20rem, calc(30vw + 15vh), 50rem) !important;
+}
+
+/* Icon targeting for all possible icon types */
+[data-sonner-toast] [data-icon],
+[data-sonner-toast] svg,
+[data-sonner-toast] .icon,
+[data-sonner-toast] [class*="icon"],
+[data-sonner-toast] i,
+[data-sonner-toast] img {
+  width: clamp(1rem, calc(0.8vw + 0.8vh), 2rem) !important;
+  height: clamp(1rem, calc(0.8vw + 0.8vh), 2rem) !important;
+}
+
+/* Toast positioning for large screens */
+@media (min-width: 2560px) {
+  .toaster {
+    top: clamp(1rem, calc(1vw + 1vh), 3rem) !important;
+    right: clamp(1rem, calc(1vw + 1vh), 3rem) !important;
+  }
+  
+  [data-sonner-toast] {
+    font-size: clamp(1.25rem, calc(1.2vw + 1.2vh), 2.5rem) !important;
+    padding: clamp(1rem, calc(0.8vw + 0.8vh), 2rem) !important;
+    border-radius: clamp(0.5rem, calc(0.3vw + 0.3vh), 1rem) !important;
+    min-height: clamp(3rem, calc(2vw + 2vh), 5rem) !important;
+    max-width: clamp(30rem, calc(35vw + 15vh), 60rem) !important;
+    width: clamp(30rem, calc(40vw + 20vh), 80rem) !important;
+  }
+  
+  [data-sonner-toast] [data-icon],
+  [data-sonner-toast] svg,
+  [data-sonner-toast] .icon,
+  [data-sonner-toast] [class*="icon"],
+  [data-sonner-toast] i,
+  [data-sonner-toast] img {
+    width: clamp(2rem, calc(1.8vw + 1.8vh), 4rem) !important;
+    height: clamp(2rem, calc(1.8vw + 1.8vh), 4rem) !important;
+  }
+}
+
+@media (min-width: 3840px) {
+  .toaster {
+    top: clamp(1.5rem, calc(1.5vw + 1.5vh), 4rem) !important;
+    right: clamp(1.5rem, calc(1.5vw + 1.5vh), 4rem) !important;
+  }
+  
+  [data-sonner-toast] {
+    font-size: clamp(1.5rem, calc(1.5vw + 1.5vh), 3rem) !important;
+    padding: clamp(1.25rem, calc(1vw + 1vh), 2.5rem) !important;
+    border-radius: clamp(0.75rem, calc(0.4vw + 0.4vh), 1.25rem) !important;
+    min-height: clamp(4rem, calc(2.5vw + 2.5vh), 6rem) !important;
+    max-width: clamp(40rem, calc(45vw + 20vh), 80rem) !important;
+    width: clamp(40rem, calc(50vw + 25vh), 100rem) !important;
+  }
+  
+  [data-sonner-toast] [data-icon],
+  [data-sonner-toast] svg,
+  [data-sonner-toast] .icon,
+  [data-sonner-toast] [class*="icon"],
+  [data-sonner-toast] i,
+  [data-sonner-toast] img {
+    width: clamp(2.5rem, calc(2.2vw + 2.2vh), 5rem) !important;
+    height: clamp(2.5rem, calc(2.2vw + 2.2vh), 5rem) !important;
+  }
+}
+
+@media (min-width: 5120px) {
+  [data-sonner-toast] {
+    font-size: clamp(1.75rem, calc(1.8vw + 1.8vh), 3.5rem) !important;
+    padding: clamp(1.5rem, calc(1.2vw + 1.2vh), 3rem) !important;
+    border-radius: clamp(1rem, calc(0.5vw + 0.5vh), 1.5rem) !important;
+    min-height: clamp(5rem, calc(3vw + 3vh), 8rem) !important;
+    max-width: clamp(50rem, calc(55vw + 25vh), 100rem) !important;
+    width: clamp(50rem, calc(60vw + 30vh), 120rem) !important;
+  }
+  
+  [data-sonner-toast] [data-icon],
+  [data-sonner-toast] svg,
+  [data-sonner-toast] .icon,
+  [data-sonner-toast] [class*="icon"],
+  [data-sonner-toast] i,
+  [data-sonner-toast] img {
+    width: clamp(3rem, calc(2.5vw + 2.5vh), 6rem) !important;
+    height: clamp(3rem, calc(2.5vw + 2.5vh), 6rem) !important;
+  }
+}

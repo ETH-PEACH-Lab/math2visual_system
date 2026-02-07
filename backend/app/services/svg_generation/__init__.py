@@ -1,0 +1,2 @@
+"""SVG generation services."""
+

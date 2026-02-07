@@ -1,0 +1,36 @@
+/* DSL Editor Container - font sizing handled by JavaScript */
+.dsl-editor-container {
+  /* Container setup for JavaScript-based font sizing */
+  /* CSS Variables for highlighting colors */
+  --highlight-bg-light: rgba(59, 130, 246, 0.1);
+  --highlight-bg-inline: rgba(59, 130, 246, 0.15);
+  --highlight-border: rgba(59, 130, 246, 0.3);
+  --highlight-bg-dark: rgba(96, 165, 250, 0.2);
+  --highlight-bg-inline-dark: rgba(96, 165, 250, 0.25);
+  --highlight-border-dark: rgba(96, 165, 250, 0.4);
+}
+
+/* Highlighting styles for DSL editor */
+.dsl-editor-container .highlighted-dsl-range {
+  background-color: var(--highlight-bg-light);
+  border: 1px solid var(--highlight-border);
+  border-radius: 3px;
+}
+
+.dsl-editor-container .highlighted-dsl-inline {
+  background-color: var(--highlight-bg-inline);
+  font-weight: 600;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .dsl-editor-container .highlighted-dsl-range {
+    background-color: var(--highlight-bg-dark);
+    border: 1px solid var(--highlight-border-dark);
+  }
+  
+  .dsl-editor-container .highlighted-dsl-inline {
+    background-color: var(--highlight-bg-inline-dark);
+  }
+}
+

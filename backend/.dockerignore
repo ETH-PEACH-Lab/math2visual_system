@@ -1,0 +1,45 @@
+# Exclude environment files (should be provided at runtime)
+.env
+
+# Exclude Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Exclude logs
+logs/
+*.log
+
+# Exclude git
+.git/
+.gitignore
+
+# Exclude documentation
+docs/
+*.md
+!README.md
+
+# Exclude test files
+tests/
+*.test.py
+*_test.py
+
+# Exclude IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Exclude config templates (not needed in image)
+config_templates/
+
+# Exclude scripts (not needed in runtime image)
+scripts/
+
+

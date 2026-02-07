@@ -1,0 +1,9 @@
+# Analytics Database Configuration Template for Math2Visual
+# Copy this file to .env and fill in your actual values
+
+# Analytics Database Configuration
+# Format: postgresql://username:password@host:port/database
+DATABASE_URL=postgresql://math2visual_user:your_secure_password@localhost:5432/math2visual_analytics
+
+# Database Configuration
+DATABASE_ECHO=false  # Set to true for SQL query logging (development only)

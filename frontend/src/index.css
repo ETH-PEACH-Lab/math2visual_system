@@ -1,0 +1,304 @@
+/* Import responsive text sizing */
+@import './styles/responsive-text.css';
+
+/* Import responsive toast sizing */
+@import './styles/responsive-toast.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.5rem;
+}
+
+/*
+  Responsive corner radius
+  - Default stays the same for laptop-sized viewports.
+  - Only scales up on very large screens (desktop/ultrawide) so corners don't look too sharp.
+*/
+@media (min-width: 1600px) {
+  :root {
+    --radius: 0.55rem;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    /* Grows gently with screen width, capped to avoid cartoonishly round corners */
+    --radius: clamp(0.55rem, 0.35vw, 0.75rem);
+  }
+}
+
+@media (min-width: 2560px) {
+  :root {
+    --radius: clamp(0.65rem, 0.3vw, 1rem);
+  }
+}
+
+@media (min-width: 3200px) {
+  :root {
+    --radius: clamp(0.75rem, 0.28vw, 1.25rem);
+  }
+}
+
+@media (min-width: 3840px) {
+  :root {
+    --radius: clamp(0.85rem, 0.26vw, 1.5rem);
+  }
+}
+
+@media (min-width: 7680px) {
+  :root {
+    --radius: clamp(1rem, 0.24vw, 2rem);
+  }
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  /* Card surface: close to the visual language editor background, but slightly lighter for better contrast with black SVG text */
+  --card: 215 28% 22%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+}
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  /* Ensure proper scaling on all screen sizes */
+  box-sizing: border-box;
+}
+
+/* Ensure all elements use border-box sizing for consistent scaling */
+/* Exclude SVG elements as they use their own coordinate system */
+*:not(svg):not(svg *), *:not(svg):not(svg *)::before, *:not(svg):not(svg *)::after {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* SVG Interactive Elements */
+@layer components {
+  /* CSS Custom Properties for highlighting */
+  :root {
+    --highlight-color: #3b82f6;
+    --highlight-stroke-width: 3;
+    --highlight-stroke-width-mobile: 4;
+    --highlight-stroke-width-small: 5;
+    --highlight-scale: 1.15;
+    --highlight-scale-mobile: 1.25;
+    --highlight-scale-small: 1.3;
+    --highlight-shadow: 0 20px 40px rgba(59, 130, 246, 0.6);
+    --highlight-shadow-mobile: 0 24px 48px rgba(59, 130, 246, 0.8);
+    --highlight-shadow-small: 0 32px 64px rgba(59, 130, 246, 0.9);
+    --highlight-text-shadow: 0 16px 32px rgba(59, 130, 246, 0.6);
+    --highlight-svg-shadow: 0 60px 120px rgba(59, 130, 246, 0.9);
+    --highlight-svg-shadow-mobile: 0 80px 160px rgba(59, 130, 246, 1);
+    --highlight-svg-shadow-small: 0 100px 200px rgba(59, 130, 246, 1.0);
+    --highlight-bg: rgba(59, 130, 246, 0.1);
+    --highlight-bg-mobile: rgba(59, 130, 246, 0.15);
+  }
+
+  /* Base cursor styling for all interactive SVG elements */
+  [data-dsl-path] {
+    cursor: pointer;
+    /* Only transition visual properties, not layout/transform properties */
+    transition: stroke 0.2s ease-in-out, stroke-width 0.2s ease-in-out, 
+                fill 0.2s ease-in-out, filter 0.2s ease-in-out, 
+                opacity 0.2s ease-in-out;
+  }
+  
+  /* Ensure consistent transform reference for operation groups across all states */
+  g[data-dsl-path] {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  
+  /* Highlighting states - using CSS custom properties */
+  [data-dsl-path].highlighted-box {
+    stroke: var(--highlight-color);
+    stroke-width: var(--highlight-stroke-width);
+    filter: drop-shadow(var(--highlight-shadow));
+  }
+  
+  [data-dsl-path].highlighted-text {
+    fill: var(--highlight-color);
+    font-weight: bold;
+    filter: drop-shadow(var(--highlight-text-shadow));
+  }
+  
+  /* More specific selectors to override inline fill attributes */
+  svg [data-dsl-path].highlighted-text,
+  svg text[data-dsl-path].highlighted-text,
+  svg g[data-dsl-path] text.highlighted-text,
+  svg [data-dsl-path] text.highlighted-text {
+    fill: var(--highlight-color) !important;
+  }
+  
+  [data-dsl-path].highlighted-svg {
+    /* merged: drop-shadow from former highlighted-svg and scale from highlighted-operation */
+    filter: drop-shadow(var(--highlight-svg-shadow));
+    transform: scale(var(--highlight-scale));
+    /* transform-origin set by JavaScript for proper positioning */
+    vector-effect: non-scaling-stroke;
+  }
+
+  /* Mobile-specific highlighting enhancements */
+  @media (max-width: 768px) {
+    [data-dsl-path].highlighted-box {
+      stroke-width: var(--highlight-stroke-width-mobile);
+      filter: drop-shadow(var(--highlight-shadow-mobile));
+      /* Add background highlight for better contrast */
+      background-color: var(--highlight-bg);
+      border-radius: 4px;
+    }
+    
+    [data-dsl-path].highlighted-text {
+      filter: drop-shadow(var(--highlight-shadow-mobile));
+      /* Add background highlight for better contrast */
+      background-color: var(--highlight-bg);
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+    
+    [data-dsl-path].highlighted-svg {
+      /* Apply strong blue-tinting filter in addition to shadow on mobile */
+      filter: drop-shadow(var(--highlight-svg-shadow-mobile)) saturate(0.8) hue-rotate(190deg) contrast(0.7);
+      transform: scale(var(--highlight-scale-mobile));
+      /* Add background highlight for better contrast */
+      background-color: var(--highlight-bg);
+      border-radius: 8px;
+      padding: 4px;
+    }
+  }
+
+  /* Extra small screens (phones in portrait) */
+  @media (max-width: 480px) {
+    [data-dsl-path].highlighted-box {
+      stroke-width: var(--highlight-stroke-width-small);
+      filter: drop-shadow(var(--highlight-shadow-small));
+      /* Enhanced background highlight for very small screens */
+      background-color: var(--highlight-bg-mobile);
+    }
+    
+    [data-dsl-path].highlighted-text {
+      filter: drop-shadow(var(--highlight-shadow-small));
+      /* Enhanced background highlight for very small screens */
+      background-color: var(--highlight-bg-mobile);
+      padding: 3px 6px;
+    }
+    
+    [data-dsl-path].highlighted-svg {
+      /* Stronger blue tint for very small screens */
+      filter: drop-shadow(var(--highlight-svg-shadow-small)) saturate(0.8) hue-rotate(190deg) contrast(0.7);
+      transform: scale(var(--highlight-scale-small));
+      /* Enhanced background highlight for very small screens */
+      background-color: var(--highlight-bg-mobile);
+      padding: 6px;
+    }
+  }
+  
+  /* Disable transitions during programmatic changes */
+  [data-dsl-path].no-transition {
+    transition: none;
+  }
+
+  /* SVG Generate Preview - ensure generated SVG fits within container */
+  .svg-preview-container svg {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+}
+
+/* stylelint-disable-next-line at-rule-no-unknown */
+@layer utilities {
+  
+  .button-responsive-size {
+    @apply !h-10 !px-6 md:!h-12 md:!px-8 lg:!h-14 lg:!px-10 xl:!h-16 xl:!px-12 2xl:!h-20 2xl:!px-16 3xl:!h-24 3xl:!px-20 4xl:!h-28 4xl:!px-24 5xl:!h-32 5xl:!px-28 6xl:!h-36 6xl:!px-32 7xl:!h-40 7xl:!px-36 8xl:!h-44 8xl:!px-40;
+  }
+  
+  .popup-button-responsive-height {
+    @apply !h-9 md:!h-10 lg:!h-11 xl:!h-12 2xl:!h-14 3xl:!h-16 4xl:!h-20 8xl:!h-24;
+  }
+  
+  .popup-responsive-width {
+    /* Base: 8 characters + icon + button + padding, scaling up for larger screens, doubled for ultrawide */
+    @apply !w-[14ch] !min-w-[14ch] !max-w-[14ch] sm:!w-[15ch] sm:!min-w-[15ch] sm:!max-w-[15ch] md:!w-[16ch] md:!min-w-[16ch] md:!max-w-[16ch] lg:!w-[17ch] lg:!min-w-[17ch] lg:!max-w-[17ch] xl:!w-[18ch] xl:!min-w-[18ch] xl:!max-w-[18ch] 2xl:!w-[19ch] 2xl:!min-w-[19ch] 2xl:!max-w-[19ch] 3xl:!w-[20ch] 3xl:!min-w-[20ch] 3xl:!max-w-[20ch] 4xl:!w-[21ch] 4xl:!min-w-[21ch] 4xl:!max-w-[21ch] 5xl:!w-[44ch] 5xl:!min-w-[44ch] 5xl:!max-w-[44ch] 6xl:!w-[46ch] 6xl:!min-w-[46ch] 6xl:!max-w-[46ch] 7xl:!w-[48ch] 7xl:!min-w-[48ch] 7xl:!max-w-[48ch] 8xl:!w-[50ch] 8xl:!min-w-[50ch] 8xl:!max-w-[50ch];
+  }
+
+  .popup-search-width {
+    /* Search popup: 1.3x larger than base popup-responsive-width */
+    @apply !w-[18ch] !min-w-[18ch] !max-w-[18ch] sm:!w-[20ch] sm:!min-w-[20ch] sm:!max-w-[20ch] md:!w-[21ch] md:!min-w-[21ch] md:!max-w-[21ch] lg:!w-[22ch] lg:!min-w-[22ch] lg:!max-w-[22ch] xl:!w-[23ch] xl:!min-w-[23ch] xl:!max-w-[23ch] 2xl:!w-[25ch] 2xl:!min-w-[25ch] 2xl:!max-w-[25ch] 3xl:!w-[26ch] 3xl:!min-w-[26ch] 3xl:!max-w-[26ch] 4xl:!w-[27ch] 4xl:!min-w-[27ch] 4xl:!max-w-[27ch] 5xl:!w-[45ch] 5xl:!min-w-[45ch] 5xl:!max-w-[45ch] 6xl:!w-[48ch] 6xl:!min-w-[48ch] 6xl:!max-w-[48ch] 7xl:!w-[50ch] 7xl:!min-w-[50ch] 7xl:!max-w-[50ch] 8xl:!w-[65ch] 8xl:!min-w-[65ch] 8xl:!max-w-[65ch];
+  }
+
+  .popup-upload-width {
+    /* Upload popup: wider than search popup for better input visibility */
+    @apply !w-[22ch] !min-w-[22ch] !max-w-[22ch] sm:!w-[25ch] sm:!min-w-[25ch] sm:!max-w-[25ch] md:!w-[28ch] md:!min-w-[28ch] md:!max-w-[28ch] lg:!w-[28ch] lg:!min-w-[28ch] lg:!max-w-[28ch] xl:!w-[30ch] xl:!min-w-[30ch] xl:!max-w-[30ch] 2xl:!w-[38ch] 2xl:!min-w-[38ch] 2xl:!max-w-[38ch] 3xl:!w-[40ch] 3xl:!min-w-[40ch] 3xl:!max-w-[40ch] 4xl:!w-[42ch] 4xl:!min-w-[42ch] 4xl:!max-w-[42ch] 5xl:!w-[48ch] 5xl:!min-w-[48ch] 5xl:!max-w-[48ch] 6xl:!w-[52ch] 6xl:!min-w-[52ch] 6xl:!max-w-[52ch] 7xl:!w-[55ch] 7xl:!min-w-[55ch] 7xl:!max-w-[55ch] 8xl:!w-[72ch] 8xl:!min-w-[72ch] 8xl:!max-w-[72ch];
+  }
+  
+}

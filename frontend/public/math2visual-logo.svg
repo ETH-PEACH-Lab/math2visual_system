@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="200" height="200" fill="#f0f0f0" stroke="#000" stroke-width="4" rx="25"/>
+  
+  <!-- Top-left quadrant (Addition - Green) -->
+  <rect x="4" y="4" width="92" height="92" fill="#4CAF50"/>
+  <rect x="40" y="46" width="20" height="8" fill="#000"/>
+  <rect x="46" y="40" width="8" height="20" fill="#000"/>
+  
+  <!-- Top-right quadrant (Multiplication - Blue) -->
+  <rect x="100" y="4" width="96" height="92" fill="#2196F3"/>
+  <line x1="130" y1="30" x2="170" y2="70" stroke="#000" stroke-width="4"/>
+  <line x1="170" y1="30" x2="130" y2="70" stroke="#000" stroke-width="4"/>
+  
+  <!-- Bottom-left quadrant (Subtraction - Yellow) -->
+  <rect x="4" y="100" width="92" height="96" fill="#FFEB3B"/>
+  <rect x="40" y="146" width="20" height="8" fill="#000"/>
+  
+  <!-- Bottom-right quadrant (Division - Red) -->
+  <rect x="100" y="100" width="96" height="96" fill="#F44336"/>
+  <circle cx="148" cy="135" r="4" fill="#000"/>
+  <rect x="138" y="146" width="20" height="4" fill="#000"/>
+  <circle cx="148" cy="165" r="4" fill="#000"/>
+  
+  <!-- Central equals sign (Orange circle) -->
+  <circle cx="100" cy="100" r="35" fill="#FF9800" stroke="#000" stroke-width="3"/>
+  <rect x="85" y="92" width="30" height="4" fill="#000"/>
+  <rect x="85" y="104" width="30" height="4" fill="#000"/>
+</svg>

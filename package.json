@@ -1,0 +1,16 @@
+{
+  "name": "math2visual",
+  "version": "1.0.0",
+  "description": "Interactive system for generating visualizations from math word problems",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && python -m flask run --debug --host=0.0.0.0 --port=5000",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && python -m flask run --host=0.0.0.0 --port=5000"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

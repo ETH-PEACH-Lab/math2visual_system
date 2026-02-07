@@ -1,0 +1,218 @@
+:root {
+  /* Layout variables */
+  --layout-breakpoint-xl: 1280px;
+  --layout-breakpoint-sm: 640px;
+  --layout-breakpoint-2xl: 1536px;
+  --layout-breakpoint-ultra: 1920px;
+  --layout-breakpoint-height: 1200px;
+  
+  /* Spacing variables */
+  --container-padding-sm: 1rem;
+  --container-padding-md: 2rem;
+  --container-padding-lg: 4rem;
+  --container-padding-xl: 6rem;
+  --container-padding-8k: 12rem;
+  
+  /* Animation variables */
+  --animation-duration-fast: 0.3s;
+  --animation-duration-spin: 1s;
+  --animation-duration-gear-1: 3s;
+  --animation-duration-gear-2: 1.8s;
+  
+  /* Layout constraints */
+  --visual-form-max-height: 70vh;
+  --grid-gap-responsive: 1.5rem;
+}
+
+#root {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+/* Layout optimizations for side-by-side design */
+@media (max-width: 1279px) {
+  /* Stack layout on smaller screens */
+  .grid-cols-1.xl\\:grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ensure proper spacing and heights for the new layout */
+@media (min-width: 1280px) {
+  /* Side-by-side layout optimizations */
+  .visualization-panel {
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .input-panel {
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  #root {
+    padding: 0;
+  }
+}
+
+/* Enhanced visual effects */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Smooth transitions */
+.animate-in {
+  animation-duration: var(--animation-duration-fast);
+  animation-fill-mode: both;
+}
+
+.fade-in-0 {
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient text support for older browsers */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Container improvements - removed fixed max-widths to allow full-screen usage */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: none; /* Remove any default max-width constraints */
+}
+
+/* Add breathing room on very small screens */
+@media (max-width: 639px) {
+  .container {
+    padding-left: var(--container-padding-sm);
+    padding-right: var(--container-padding-sm);
+  }
+}
+
+/* Larger padding on bigger screens */
+@media (min-width: 640px) {
+  .container {
+    padding-left: var(--container-padding-md);
+    padding-right: var(--container-padding-md);
+  }
+}
+
+/* Ensure full width utilization for large screens */
+@media (min-width: 1536px) {
+  .container {
+    padding-left: var(--container-padding-lg);
+    padding-right: var(--container-padding-lg);
+  }
+}
+
+/* Ultra-wide screen support */
+@media (min-width: 1920px) {
+  .container {
+    padding-left: var(--container-padding-xl);
+    padding-right: var(--container-padding-xl);
+  }
+}
+
+/* 8K screen support (7680px and above) */
+@media (min-width: 7680px) {
+  .container {
+    padding-left: var(--container-padding-8k);
+    padding-right: var(--container-padding-8k);
+  }
+}
+
+/* Loading animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes spin-reverse-offset {
+  0% { transform: rotate(15deg); }
+  100% { transform: rotate(-345deg); }
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin var(--animation-duration-spin) linear infinite;
+  opacity: 0.8;
+}
+
+/* Gear animations - synchronized for meshing */
+.gear-1 {
+  animation: spin var(--animation-duration-gear-1) linear infinite;
+  transform-origin: center;
+}
+
+.gear-2 {
+  animation: spin-reverse-offset var(--animation-duration-gear-2) linear infinite;
+  transform-origin: center;
+}
+
+/* Aspect-ratio-based layout switching: stack on tall/narrow screens */
+@media (max-aspect-ratio: 3/4) {
+  /* Use more specific selectors to override grid layout */
+  .height-responsive-grid,
+  .height-responsive-grid.grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap-responsive);
+  }
+  
+  .height-responsive-grid > div:first-child,
+  .height-responsive-grid > div:first-child > * {
+    padding-left: 0;
+  }
+  
+  .height-responsive-grid > div:last-child,
+  .height-responsive-grid > div:last-child > * {
+    padding-left: 0;
+  }
+  
+  /* Visual Language form in single-column layout: limit height to content */
+  .height-responsive-grid .visual-language-form {
+    height: auto;
+    max-height: var(--visual-form-max-height);
+  }
+}
+
+/* Side-by-side layout: Visual Language form matches left column height */
+@media (min-aspect-ratio: 3/4) {
+  /* Use more specific selectors to ensure proper height inheritance */
+  .height-responsive-grid .visual-language-form,
+  .height-responsive-grid .visual-language-form[style*="height"] {
+    height: 100%;
+  }
+  
+  .height-responsive-grid .visual-language-form .dsl-editor-container,
+  .height-responsive-grid .visual-language-form .dsl-editor-container[style*="height"] {
+    height: 100%;
+  }
+}

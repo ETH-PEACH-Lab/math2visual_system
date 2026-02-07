@@ -1,0 +1,407 @@
+# English translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-12-09 15:12+0100\n"
+"PO-Revision-Date: 2025-12-03 21:57+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: app/api/middleware/error_handlers.py:16
+msgid "Not found"
+msgstr ""
+
+#: app/api/middleware/error_handlers.py:20
+msgid "Bad request"
+msgstr ""
+
+#: app/api/middleware/error_handlers.py:25
+msgid "Internal server error"
+msgstr ""
+
+#: app/api/middleware/error_handlers.py:29
+msgid "Request too large"
+msgstr ""
+
+#: app/api/routes/generation.py:64 app/api/routes/generation.py:235
+#: app/api/routes/generation.py:260
+msgid "Empty Visual Language provided."
+msgstr ""
+
+#: app/api/routes/generation.py:78 app/api/routes/tutor.py:52
+msgid "Provide a math word problem (MWP)."
+msgstr ""
+
+#: app/api/routes/generation.py:85 app/api/routes/tutor.py:60
+msgid "Did not get Visual Language from AI. Please try again."
+msgstr ""
+
+#: app/api/routes/generation.py:108 app/api/routes/generation.py:200
+msgid "Visual Language parse error."
+msgstr "Error while parsing Visual Language. Retrying might help."
+
+#: app/api/routes/generation.py:126
+#, fuzzy, python-format
+msgid "Could not generate formal visualization: %(error)s"
+msgstr "Could not generate formal visualization: %(error)s"
+
+#: app/api/routes/generation.py:128
+msgid "Could not generate formal visualization. Retrying might help."
+msgstr ""
+
+#: app/api/routes/generation.py:130
+#, python-format
+msgid "Formal generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:132
+#, python-format
+msgid "Unexpected formal generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:148
+#, python-format
+msgid "Could not generate intuitive visualization: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:150
+msgid "Could not generate intuitive visualization. Retrying might help."
+msgstr ""
+
+#: app/api/routes/generation.py:152
+#, python-format
+msgid "Intuitive generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:154
+#, python-format
+msgid "Unexpected intuitive generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:213
+#, python-format
+msgid "Could not generate %(variant)s visualization: %(error)s"
+msgstr "Could not generate %(variant)s visualization: %(error)s"
+
+#: app/api/routes/generation.py:215
+#, python-format
+msgid "Could not generate %(variant)s visualization. Retrying might help."
+msgstr "Could not generate %(variant)s visualization. Retrying might help."
+
+#: app/api/routes/generation.py:217
+#, python-format
+msgid "%(variant)s generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:219
+#, python-format
+msgid "Unexpected %(variant)s generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:50 app/api/routes/svg_dataset.py:256
+msgid "SVG dataset directory not found"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:73
+msgid "Permission denied accessing SVG dataset"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:109
+#, python-format
+msgid "Search failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:165
+#, python-format
+msgid "Request too large (max %(max)dMB)"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:169
+msgid "No file uploaded"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:175
+msgid "Expected filename not provided"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:178
+msgid "No file selected"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:206
+#, python-format
+msgid ""
+"File already exists or has been added by another user in the meantime: "
+"%(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:228
+#, python-format
+msgid "SVG file uploaded successfully: %(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:233
+#, python-format
+msgid "Upload failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:251
+msgid "Name parameter is required"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:269
+#, python-format
+msgid "Check failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:287
+msgid "Only SVG files are allowed"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:298
+msgid "File not found"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:303
+msgid "File not accessible"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:309
+msgid "Empty file"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:323
+#, python-format
+msgid "Failed to serve file: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:344
+msgid "Entity type is required"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:353
+msgid "Failed to generate SVG"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:384
+#, python-format
+msgid "Generated SVG validation failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:397
+#, python-format
+msgid "SVG icon generated successfully: %(entity_type)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:404
+#, python-format
+msgid "Generation failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:426
+msgid "Temporary filename is required"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:434
+msgid "Invalid filename"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:442
+msgid "Temporary file not found"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:453
+#, python-format
+msgid "File already exists in dataset: %(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:464
+#, python-format
+msgid "SVG added to dataset: %(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:471
+#, python-format
+msgid "Confirmation of temporary SVG failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/system.py:63
+#, python-format
+msgid "Failed to get storage status: %(error)s"
+msgstr ""
+
+#: app/api/routes/system.py:88
+#, python-format
+msgid "Failed to get antivirus status: %(error)s"
+msgstr ""
+
+#: app/api/routes/tutor.py:28
+msgid "Missing DSL scope for visual request."
+msgstr ""
+
+#: app/api/routes/tutor.py:85
+msgid "Missing session id."
+msgstr ""
+
+#: app/api/routes/tutor.py:87
+msgid "Please provide a message."
+msgstr ""
+
+#: app/api/routes/tutor.py:91
+msgid "Session not found or expired."
+msgstr ""
+
+#: app/api/routes/generation.py:69 app/api/routes/generation.py:250
+#: app/api/routes/generation.py:277
+#, python-format
+msgid "Visual Language is too long (max %(max)d characters)."
+msgstr "Visual Language is too long (max %(max)d characters)."
+
+#: app/api/routes/generation.py:87 app/api/routes/tutor.py:319
+#, python-format
+msgid "Math word problem is too long (max %(max)d characters)."
+msgstr "Math word problem is too long (max %(max)d characters)."
+
+#: app/api/routes/generation.py:89
+#, python-format
+msgid "Formula is too long (max %(max)d characters)."
+msgstr "Formula is too long (max %(max)d characters)."
+
+#: app/api/routes/generation.py:91
+#, python-format
+msgid "Hint is too long (max %(max)d characters)."
+msgstr "Hint is too long (max %(max)d characters)."
+
+#: app/api/routes/tutor.py:384
+#, python-format
+msgid "Message is too long (max %(max)d characters)."
+msgstr "Message is too long (max %(max)d characters)."
+
+# Generator error messages (from visual_generation modules)
+#~ msgid "Cannot generate visual: SVG file not found for %(base_name)s."
+#~ msgstr "Cannot generate visual: SVG file not found for %(base_name)s."
+
+#~ msgid ""
+#~ "No visual can be generated because "
+#~ "of multiplier has entity quantity higher"
+#~ " than 12."
+#~ msgstr ""
+#~ "No visual can be generated because "
+#~ "of multiplier has entity quantity higher"
+#~ " than 12."
+
+#~ msgid "SVG file not found for %(base_name)s."
+#~ msgstr "SVG file not found for %(base_name)s."
+
+#~ msgid "Cannot find figure path for attribute type: %(attr_type)s."
+#~ msgstr "Cannot find figure path for attribute type: %(attr_type)s."
+
+#~ msgid "Division requires exactly two containers."
+#~ msgstr "Division requires exactly two containers."
+
+#~ msgid "One or both of the entity quantities are not integers."
+#~ msgstr "One or both of the entity quantities are not integers."
+
+#~ msgid "Cannot divide by zero or a negative entity quantity."
+#~ msgstr "Cannot divide by zero or a negative entity quantity."
+
+#~ msgid ""
+#~ "Cannot generate visual: %(dividend)s cannot"
+#~ " be evenly divided by %(divisor)s."
+#~ msgstr ""
+#~ "Cannot generate visual: %(dividend)s cannot"
+#~ " be evenly divided by %(divisor)s."
+
+#~ msgid ""
+#~ "Cannot generate visual: Division result "
+#~ "rectangle number is higher than 12."
+#~ msgstr ""
+#~ "Cannot generate visual: Division result "
+#~ "rectangle number is higher than 12."
+
+#~ msgid "Division requires entity type to be the same for both containers."
+#~ msgstr "Division requires entity type to be the same for both containers."
+
+#~ msgid ""
+#~ "Cannot generate visual: Division requires "
+#~ "exactly two containers, but it contains"
+#~ " more than two."
+#~ msgstr ""
+#~ "Cannot generate visual: Division requires "
+#~ "exactly two containers, but it contains"
+#~ " more than two."
+
+#~ msgid ""
+#~ "Cannot generate visual: Cannot divide by"
+#~ " zero or a negative entity quantity."
+#~ msgstr ""
+#~ "Cannot generate visual: Cannot divide by"
+#~ " zero or a negative entity quantity."
+
+#~ msgid ""
+#~ "Cannot generate visual: Surplus requires "
+#~ "entity type to be the same for "
+#~ "both containers."
+#~ msgstr ""
+#~ "Cannot generate visual: Surplus requires "
+#~ "entity type to be the same for "
+#~ "both containers."
+
+#~ msgid ""
+#~ "Cannot generate visual: Area calculation "
+#~ "requires exactly two containers (length, "
+#~ "width), requirements do not met."
+#~ msgstr ""
+#~ "Cannot generate visual: Area calculation "
+#~ "requires exactly two containers (length, "
+#~ "width), requirements do not met."
+
+#~ msgid ""
+#~ "Cannot generate visual: No result "
+#~ "container provided in visual language."
+#~ msgstr ""
+#~ "Cannot generate visual: No result "
+#~ "container provided in visual language."
+
+#~ msgid ""
+#~ "Cannot generate visual: The subtrahend "
+#~ "entity quantity is not an integer."
+#~ msgstr ""
+#~ "Cannot generate visual: The subtrahend "
+#~ "entity quantity is not an integer."
+
+#~ msgid "Cannot generate visual: The minuend entity quantity is higher than 10."
+#~ msgstr "Cannot generate visual: The minuend entity quantity is higher than 10."
+
+#~ msgid ""
+#~ "Cannot generate visual: The subtrahend "
+#~ "entity quantity is higher than 10."
+#~ msgstr ""
+#~ "Cannot generate visual: The subtrahend "
+#~ "entity quantity is higher than 10."
+
+#~ msgid "Cannot generate visual: Error in handling the comparison."
+#~ msgstr "Cannot generate visual: Error in handling the comparison."
+
+#~ msgid ""
+#~ "Once you are ready, you can do "
+#~ "the task of converting, you can "
+#~ "write down your thinking procedure but"
+#~ " please make sure to give me "
+#~ "the final visual language of the "
+#~ "following question in this format in "
+#~ "the end: visual_language:<the visual language"
+#~ " result>"
+#~ msgstr ""
+

@@ -1,0 +1,995 @@
+/* Height-aware responsive text sizing using pure CSS */
+
+/* CSS Custom Properties for responsive text sizing */
+:root {
+  --responsive-text-base-min: 0.875rem;
+  --responsive-text-base-max: 2rem;
+  --responsive-text-base-scale: calc(0.8vw + 0.8vh);
+  
+  --responsive-title-min: 1rem;
+  --responsive-title-max: 4rem;
+  --responsive-title-scale: calc(1.5vw + 1vh);
+  
+  --responsive-icon-min: 1.5rem;
+  --responsive-icon-max: 3rem;
+  --responsive-icon-scale: calc(1.2vw + 1vh);
+  
+  --responsive-smaller-icon-min: 1rem;
+  --responsive-smaller-icon-max: 2rem;
+  --responsive-smaller-icon-scale: calc(0.8vw + 0.8vh);
+  
+  --responsive-smaller-text-min: 0.875rem;
+  --responsive-smaller-text-max: 1.75rem;
+  --responsive-smaller-text-scale: calc(0.7vw + 0.7vh);
+  
+  --responsive-toast-min: 0.875rem;
+  --responsive-toast-max: 2rem;
+  --responsive-toast-scale: calc(0.8vw + 0.8vh);
+}
+
+/* Simplified version using viewport units and aspect ratio detection */
+.responsive-title-simple {
+  /* Base sizing that considers both width and height */
+  font-size: clamp(
+    var(--responsive-title-min),
+    var(--responsive-title-scale),
+    var(--responsive-title-max)
+  );
+}
+
+/* Additional specificity to ensure override */
+h1.responsive-title-simple,
+h2.responsive-title-simple,
+h3.responsive-title-simple {
+  font-size: clamp(
+    var(--responsive-title-min),
+    var(--responsive-title-scale),
+    var(--responsive-title-max)
+  );
+}
+
+/* For very wide but short screens (aspect ratio > 2.5), cap the size more aggressively */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 2.5/1) and (max-width: 2560px) {
+  .responsive-title-simple,
+  h1.responsive-title-simple,
+  h2.responsive-title-simple,
+  h3.responsive-title-simple {
+    /* For very wide screens, reduce the maximum size significantly */
+    font-size: clamp(
+      var(--responsive-title-min),
+      calc(1vw + 1vh), /* Less weight on width scaling */
+      2.5rem /* Much lower maximum for short screens */
+    );
+  }
+}
+
+/* Additional refinement for extremely wide screens */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 3/1) and (max-width: 2560px) {
+  .responsive-title-simple,
+  h1.responsive-title-simple,
+  h2.responsive-title-simple,
+  h3.responsive-title-simple {
+    /* For extremely wide screens, be even more conservative */
+    font-size: clamp(
+      var(--responsive-title-min),
+      calc(0.8vw + 1vh),
+      2rem /* Even lower maximum */
+    );
+  }
+}
+
+/* Refined sizing for desktop monitors (2560px - 3840px range) */
+@media (min-width: 2560px) and (max-width: 3840px) {
+  .responsive-title-simple,
+  h1.responsive-title-simple,
+  h2.responsive-title-simple,
+  h3.responsive-title-simple {
+    /* Moderate scaling for standard desktop monitors */
+    font-size: clamp(
+      1.25rem, /* 20px minimum */
+      calc(0.9vw + 0.9vh), /* More conservative scaling */
+      2.5rem /* 40px maximum - more reasonable for desktop */
+    );
+  }
+}
+
+/* Refined sizing for 4K desktop monitors (3840px - 5120px range) */
+@media (min-width: 3840px) and (max-width: 5120px) {
+  .responsive-title-simple,
+  h1.responsive-title-simple,
+  h2.responsive-title-simple,
+  h3.responsive-title-simple {
+    /* Keep 4K desktop readable without “TV mode” oversized headings */
+    font-size: clamp(
+      1.375rem, /* 22px minimum */
+      calc(1.05vw + 1vh), /* Conservative scaling on 4K desktop */
+      3.25rem /* 52px maximum */
+    );
+  }
+}
+
+/* Refined sizing for very large desktop monitors (5K/6K/8K monitors) */
+@media (min-width: 5120px) and (max-width: 7680px) {
+  .responsive-title-simple,
+  h1.responsive-title-simple,
+  h2.responsive-title-simple,
+  h3.responsive-title-simple {
+    font-size: clamp(
+      1.5rem, /* 24px minimum */
+      calc(1.2vw + 1.1vh), /* Less aggressive than TV mode */
+      4rem /* 64px maximum */
+    );
+  }
+}
+
+/* Enhanced sizing for huge displays (8K TVs and larger) */
+@media (min-width: 7680px) {
+  .responsive-title-simple,
+  h1.responsive-title-simple,
+  h2.responsive-title-simple,
+  h3.responsive-title-simple {
+    font-size: clamp(
+      1.75rem, /* 28px minimum */
+      calc(1.5vw + 1.2vh),
+      4.5rem /* 72px maximum */
+    );
+  }
+}
+
+/* Height-aware responsive text sizing for general text content */
+.responsive-text-font-size {
+  /* Base sizing that considers both width and height */
+  font-size: clamp(
+    var(--responsive-text-base-min),
+    var(--responsive-text-base-scale),
+    var(--responsive-text-base-max)
+  );
+  line-height: 1.35; /* Prevent line overlap on extreme aspect ratios/zoom */
+}
+
+/* Additional specificity for Button components */
+button.responsive-text-font-size,
+.btn.responsive-text-font-size,
+[data-slot="button"].responsive-text-font-size {
+  font-size: clamp(
+    var(--responsive-text-base-min),
+    var(--responsive-text-base-scale),
+    var(--responsive-text-base-max)
+  );
+  line-height: 1.35;
+}
+
+/* Additional specificity for Dropdown Menu Items */
+[role="menuitem"].responsive-text-font-size,
+[data-radix-collection-item].responsive-text-font-size {
+  font-size: clamp(
+    var(--responsive-text-base-min),
+    var(--responsive-text-base-scale),
+    var(--responsive-text-base-max)
+  );
+  line-height: 1.35;
+}
+
+/* Even more specific selector to override Tailwind's responsive classes */
+button.responsive-text-font-size[class*="text-"],
+.btn.responsive-text-font-size[class*="text-"],
+button[class*="responsive-text-font-size"],
+button.responsive-text-font-size {
+  font-size: clamp(
+    var(--responsive-text-base-min),
+    var(--responsive-text-base-scale),
+    var(--responsive-text-base-max)
+  );
+  line-height: 1.35;
+}
+
+/* Nuclear option - override all possible Tailwind text size classes on buttons with our class */
+button.responsive-text-font-size.text-xs,
+button.responsive-text-font-size.md\:text-sm,
+button.responsive-text-font-size.lg\:text-base,
+button.responsive-text-font-size.xl\:text-lg {
+  font-size: clamp(
+    var(--responsive-text-base-min),
+    var(--responsive-text-base-scale),
+    var(--responsive-text-base-max)
+  );
+}
+
+/* Create a button base class without built-in text sizing */
+.responsive-button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  pointer-events: auto;
+  opacity: 1;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.responsive-button-base:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.responsive-button-base:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* For very wide but short screens (aspect ratio > 2.5), cap the size more aggressively */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 2.5/1) and (max-width: 2560px) {
+  .responsive-text-font-size,
+  button.responsive-text-font-size,
+  .btn.responsive-text-font-size,
+  [role="menuitem"].responsive-text-font-size,
+  [data-radix-collection-item].responsive-text-font-size {
+    font-size: clamp(
+      var(--responsive-text-base-min),
+      calc(0.6vw + 0.8vh), /* Less weight on width scaling */
+      1.5rem /* Much lower maximum for short screens */
+    );
+  }
+}
+
+/* Additional refinement for extremely wide screens */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 3/1) and (max-width: 2560px) {
+  .responsive-text-font-size,
+  button.responsive-text-font-size,
+  .btn.responsive-text-font-size,
+  [role="menuitem"].responsive-text-font-size,
+  [data-radix-collection-item].responsive-text-font-size {
+    font-size: clamp(
+      var(--responsive-text-base-min),
+      calc(0.5vw + 0.8vh),
+      1.25rem /* Even lower maximum */
+    );
+  }
+}
+
+/* Refined sizing for desktop monitors (2560px - 3840px range) */
+@media (min-width: 2560px) and (max-width: 3840px) {
+  .responsive-text-font-size,
+  button.responsive-text-font-size,
+  .btn.responsive-text-font-size,
+  button.responsive-text-font-size[class*="text-"],
+  .btn.responsive-text-font-size[class*="text-"],
+  button[class*="responsive-text-font-size"],
+  button.responsive-text-font-size.text-xs,
+  button.responsive-text-font-size.md\:text-sm,
+  button.responsive-text-font-size.lg\:text-base,
+  button.responsive-text-font-size.xl\:text-lg,
+  [role="menuitem"].responsive-text-font-size,
+  [data-radix-collection-item].responsive-text-font-size {
+    font-size: clamp(
+      1rem, /* 16px minimum - standard desktop size */
+      calc(0.7vw + 0.7vh), /* More conservative scaling */
+      1.75rem /* 28px maximum - reasonable for desktop */
+    );
+  }
+}
+
+/* Refined sizing for 4K desktop monitors (3840px - 5120px range) */
+@media (min-width: 3840px) and (max-width: 5120px) {
+  .responsive-text-font-size,
+  button.responsive-text-font-size,
+  .btn.responsive-text-font-size,
+  button.responsive-text-font-size[class*="text-"],
+  .btn.responsive-text-font-size[class*="text-"],
+  button[class*="responsive-text-font-size"],
+  button.responsive-text-font-size.text-xs,
+  button.responsive-text-font-size.md\:text-sm,
+  button.responsive-text-font-size.lg\:text-base,
+  button.responsive-text-font-size.xl\:text-lg,
+  [role="menuitem"].responsive-text-font-size,
+  [data-radix-collection-item].responsive-text-font-size {
+    font-size: clamp(
+      1.05rem, /* ~17px minimum */
+      calc(0.85vw + 0.85vh), /* Conservative scaling on 4K desktop */
+      2.1rem /* ~34px maximum */
+    );
+  }
+}
+
+/* Refined sizing for very large desktop monitors (5K/6K/8K monitors) */
+@media (min-width: 5120px) and (max-width: 7680px) {
+  .responsive-text-font-size,
+  button.responsive-text-font-size,
+  .btn.responsive-text-font-size,
+  button.responsive-text-font-size[class*="text-"],
+  .btn.responsive-text-font-size[class*="text-"],
+  button[class*="responsive-text-font-size"],
+  button.responsive-text-font-size.text-xs,
+  button.responsive-text-font-size.md\:text-sm,
+  button.responsive-text-font-size.lg\:text-base,
+  button.responsive-text-font-size.xl\:text-lg,
+  [role="menuitem"].responsive-text-font-size,
+  [data-radix-collection-item].responsive-text-font-size {
+    font-size: clamp(
+      1.25rem,
+      calc(1vw + 1vh), /* Less aggressive than TV mode */
+      3rem
+    );
+  }
+}
+
+/* Enhanced sizing for huge displays (8K TVs and larger) */
+@media (min-width: 7680px) {
+  .responsive-text-font-size,
+  button.responsive-text-font-size,
+  .btn.responsive-text-font-size,
+  button.responsive-text-font-size[class*="text-"],
+  .btn.responsive-text-font-size[class*="text-"],
+  button[class*="responsive-text-font-size"],
+  button.responsive-text-font-size.text-xs,
+  button.responsive-text-font-size.md\:text-sm,
+  button.responsive-text-font-size.lg\:text-base,
+  button.responsive-text-font-size.xl\:text-lg,
+  [role="menuitem"].responsive-text-font-size,
+  [data-radix-collection-item].responsive-text-font-size {
+    font-size: clamp(
+      1.35rem,
+      calc(1.5vw + 1.2vh),
+      4rem
+    );
+  }
+}
+
+/* Height-aware responsive icon sizing */
+.responsive-icon-font-size {
+  /* Base sizing that considers both width and height */
+  font-size: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  );
+}
+
+/* Responsive width matching icon size */
+.responsive-icon-width {
+  width: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  );
+}
+
+/* Additional specificity for icon elements */
+svg.responsive-icon-font-size,
+i.responsive-icon-font-size,
+.icon.responsive-icon-font-size {
+  font-size: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  );
+  width: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  );
+  height: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  );
+}
+
+/* More specific targeting for Lucide React icons */
+svg[class*="lucide"].responsive-icon-font-size,
+svg[class*="lucide-"].responsive-icon-font-size {
+  font-size: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  ) !important;
+  width: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  ) !important;
+  height: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  ) !important;
+}
+
+/* Even more specific targeting for Lucide icons with data attributes */
+svg[data-lucide].responsive-icon-font-size,
+svg[data-lucide-icon].responsive-icon-font-size {
+  font-size: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  ) !important;
+  width: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  ) !important;
+  height: clamp(
+    var(--responsive-icon-min),
+    var(--responsive-icon-scale),
+    var(--responsive-icon-max)
+  ) !important;
+}
+
+/* For very wide but short screens (aspect ratio > 2.5), cap the size more aggressively */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 2.5/1) and (max-width: 2560px) {
+  .responsive-icon-font-size,
+  svg[class*="lucide"].responsive-icon-font-size,
+  svg[class*="lucide-"].responsive-icon-font-size,
+  svg[data-lucide].responsive-icon-font-size,
+  svg[data-lucide-icon].responsive-icon-font-size {
+    font-size: clamp(
+      var(--responsive-icon-min),
+      calc(0.8vw + 1vh), /* Less weight on width scaling */
+      2.25rem /* Much lower maximum for short screens */
+    ) !important;
+    width: clamp(
+      var(--responsive-icon-min),
+      calc(0.8vw + 1vh), /* Less weight on width scaling */
+      2.25rem /* Much lower maximum for short screens */
+    ) !important;
+    height: clamp(
+      var(--responsive-icon-min),
+      calc(0.8vw + 1vh), /* Less weight on width scaling */
+      2.25rem /* Much lower maximum for short screens */
+    ) !important;
+  }
+}
+
+/* Additional refinement for extremely wide screens */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 3/1) and (max-width: 2560px) {
+  .responsive-icon-font-size,
+  svg[class*="lucide"].responsive-icon-font-size,
+  svg[class*="lucide-"].responsive-icon-font-size,
+  svg[data-lucide].responsive-icon-font-size,
+  svg[data-lucide-icon].responsive-icon-font-size {
+    font-size: clamp(
+      var(--responsive-icon-min),
+      calc(0.6vw + 1vh),
+      2rem /* Even lower maximum */
+    ) !important;
+    width: clamp(
+      var(--responsive-icon-min),
+      calc(0.6vw + 1vh),
+      2rem /* Even lower maximum */
+    ) !important;
+    height: clamp(
+      var(--responsive-icon-min),
+      calc(0.6vw + 1vh),
+      2rem /* Even lower maximum */
+    ) !important;
+  }
+}
+
+/* Refined sizing for desktop monitors (2560px - 3840px range) */
+@media (min-width: 2560px) and (max-width: 3840px) {
+  .responsive-icon-font-size,
+  svg.responsive-icon-font-size,
+  i.responsive-icon-font-size,
+  .icon.responsive-icon-font-size,
+  svg[class*="lucide"].responsive-icon-font-size,
+  svg[class*="lucide-"].responsive-icon-font-size,
+  svg[data-lucide].responsive-icon-font-size,
+  svg[data-lucide-icon].responsive-icon-font-size {
+    font-size: clamp(
+      1.5rem, /* 24px minimum - reasonable for desktop */
+      calc(1vw + 1vh), /* More conservative scaling */
+      3rem /* 48px maximum - reasonable for desktop */
+    ) !important;
+    width: clamp(
+      1.5rem, /* 24px minimum - reasonable for desktop */
+      calc(1vw + 1vh), /* More conservative scaling */
+      3rem /* 48px maximum - reasonable for desktop */
+    ) !important;
+    height: clamp(
+      1.5rem, /* 24px minimum - reasonable for desktop */
+      calc(1vw + 1vh), /* More conservative scaling */
+      3rem /* 48px maximum - reasonable for desktop */
+    ) !important;
+  }
+}
+
+/* Refined sizing for 4K desktop monitors (3840px - 5120px range) */
+@media (min-width: 3840px) and (max-width: 5120px) {
+  .responsive-icon-font-size,
+  svg.responsive-icon-font-size,
+  i.responsive-icon-font-size,
+  .icon.responsive-icon-font-size,
+  svg[class*="lucide"].responsive-icon-font-size,
+  svg[class*="lucide-"].responsive-icon-font-size,
+  svg[data-lucide].responsive-icon-font-size,
+  svg[data-lucide-icon].responsive-icon-font-size {
+    font-size: clamp(
+      1.75rem, /* 28px minimum */
+      calc(1.25vw + 1.15vh), /* Conservative scaling on 4K desktop */
+      3.5rem /* 56px maximum */
+    ) !important;
+    width: clamp(
+      1.75rem,
+      calc(1.25vw + 1.15vh),
+      3.5rem
+    ) !important;
+    height: clamp(
+      1.75rem,
+      calc(1.25vw + 1.15vh),
+      3.5rem
+    ) !important;
+  }
+}
+
+/* Refined sizing for very large desktop monitors (5K/6K/8K monitors) */
+@media (min-width: 5120px) and (max-width: 7680px) {
+  .responsive-icon-font-size,
+  svg.responsive-icon-font-size,
+  i.responsive-icon-font-size,
+  .icon.responsive-icon-font-size,
+  svg[class*="lucide"].responsive-icon-font-size,
+  svg[class*="lucide-"].responsive-icon-font-size,
+  svg[data-lucide].responsive-icon-font-size,
+  svg[data-lucide-icon].responsive-icon-font-size {
+    font-size: clamp(
+      2.5rem,
+      calc(1.6vw + 1.5vh), /* Less aggressive than TV mode */
+      5rem
+    ) !important;
+    width: clamp(
+      2.5rem,
+      calc(1.6vw + 1.5vh),
+      5rem
+    ) !important;
+    height: clamp(
+      2.5rem,
+      calc(1.6vw + 1.5vh),
+      5rem
+    ) !important;
+  }
+}
+
+/* Enhanced sizing for huge displays (8K TVs and larger) */
+@media (min-width: 7680px) {
+  .responsive-icon-font-size,
+  svg.responsive-icon-font-size,
+  i.responsive-icon-font-size,
+  .icon.responsive-icon-font-size,
+  svg[class*="lucide"].responsive-icon-font-size,
+  svg[class*="lucide-"].responsive-icon-font-size,
+  svg[data-lucide].responsive-icon-font-size,
+  svg[data-lucide-icon].responsive-icon-font-size {
+    font-size: clamp(
+      2.75rem,
+      calc(2vw + 1.8vh),
+      6rem
+    ) !important;
+    width: clamp(
+      2.75rem,
+      calc(2vw + 1.8vh),
+      6rem
+    ) !important;
+    height: clamp(
+      2.75rem,
+      calc(2vw + 1.8vh),
+      6rem
+    ) !important;
+  }
+}
+
+/* Height-aware responsive smaller icon sizing */
+.responsive-smaller-icon-font-size {
+  /* Base sizing that considers both width and height */
+  font-size: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  );
+}
+
+/* Additional specificity for smaller icon elements */
+svg.responsive-smaller-icon-font-size,
+i.responsive-smaller-icon-font-size,
+.icon.responsive-smaller-icon-font-size {
+  font-size: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  );
+  width: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  );
+  height: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  );
+}
+
+/* More specific targeting for Lucide React icons */
+svg[class*="lucide"].responsive-smaller-icon-font-size,
+svg[class*="lucide-"].responsive-smaller-icon-font-size {
+  font-size: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  ) !important;
+  width: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  ) !important;
+  height: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  ) !important;
+}
+
+/* Even more specific targeting for Lucide icons with data attributes */
+svg[data-lucide].responsive-smaller-icon-font-size,
+svg[data-lucide-icon].responsive-smaller-icon-font-size {
+  font-size: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  ) !important;
+  width: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  ) !important;
+  height: clamp(
+    var(--responsive-smaller-icon-min),
+    var(--responsive-smaller-icon-scale),
+    var(--responsive-smaller-icon-max)
+  ) !important;
+}
+
+/* For very wide but short screens (aspect ratio > 2.5), cap the size more aggressively */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 2.5/1) and (max-width: 2560px) {
+  .responsive-smaller-icon-font-size,
+  svg.responsive-smaller-icon-font-size,
+  svg[class*="lucide"].responsive-smaller-icon-font-size,
+  svg[data-lucide].responsive-smaller-icon-font-size,
+  svg[data-lucide-icon].responsive-smaller-icon-font-size {
+    font-size: clamp(
+      var(--responsive-smaller-icon-min),
+      calc(0.6vw + 0.8vh), /* Less weight on width scaling */
+      1.5rem /* Much lower maximum for short screens */
+    ) !important;
+    width: clamp(
+      var(--responsive-smaller-icon-min),
+      calc(0.6vw + 0.8vh), /* Less weight on width scaling */
+      1.5rem /* Much lower maximum for short screens */
+    ) !important;
+    height: clamp(
+      var(--responsive-smaller-icon-min),
+      calc(0.6vw + 0.8vh), /* Less weight on width scaling */
+      1.5rem /* Much lower maximum for short screens */
+    ) !important;
+  }
+}
+
+/* Additional refinement for extremely wide screens */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 3/1) and (max-width: 2560px) {
+  .responsive-smaller-icon-font-size,
+  svg.responsive-smaller-icon-font-size,
+  svg[class*="lucide"].responsive-smaller-icon-font-size,
+  svg[data-lucide].responsive-smaller-icon-font-size,
+  svg[data-lucide-icon].responsive-smaller-icon-font-size {
+    font-size: clamp(
+      var(--responsive-smaller-icon-min),
+      calc(0.5vw + 0.8vh),
+      1.25rem /* Even lower maximum */
+    ) !important;
+    width: clamp(
+      var(--responsive-smaller-icon-min),
+      calc(0.5vw + 0.8vh),
+      1.25rem /* Even lower maximum */
+    ) !important;
+    height: clamp(
+      var(--responsive-smaller-icon-min),
+      calc(0.5vw + 0.8vh),
+      1.25rem /* Even lower maximum */
+    ) !important;
+  }
+}
+
+/* Refined sizing for desktop monitors (2560px - 3840px range) */
+@media (min-width: 2560px) and (max-width: 3840px) {
+  .responsive-smaller-icon-font-size,
+  svg.responsive-smaller-icon-font-size,
+  i.responsive-smaller-icon-font-size,
+  .icon.responsive-smaller-icon-font-size,
+  svg[class*="lucide"].responsive-smaller-icon-font-size,
+  svg[data-lucide].responsive-smaller-icon-font-size,
+  svg[data-lucide-icon].responsive-smaller-icon-font-size {
+    font-size: clamp(
+      1.25rem, /* 20px minimum - reasonable for desktop */
+      calc(0.8vw + 0.8vh), /* More conservative scaling */
+      2.25rem /* 36px maximum - reasonable for desktop */
+    ) !important;
+    width: clamp(
+      1.25rem, /* 20px minimum - reasonable for desktop */
+      calc(0.8vw + 0.8vh), /* More conservative scaling */
+      2.25rem /* 36px maximum - reasonable for desktop */
+    ) !important;
+    height: clamp(
+      1.25rem, /* 20px minimum - reasonable for desktop */
+      calc(0.8vw + 0.8vh), /* More conservative scaling */
+      2.25rem /* 36px maximum - reasonable for desktop */
+    ) !important;
+  }
+}
+
+/* Refined sizing for 4K desktop monitors (3840px - 5120px range) */
+@media (min-width: 3840px) and (max-width: 5120px) {
+  .responsive-smaller-icon-font-size,
+  svg.responsive-smaller-icon-font-size,
+  i.responsive-smaller-icon-font-size,
+  .icon.responsive-smaller-icon-font-size,
+  svg[class*="lucide"].responsive-smaller-icon-font-size,
+  svg[data-lucide].responsive-smaller-icon-font-size,
+  svg[data-lucide-icon].responsive-smaller-icon-font-size {
+    font-size: clamp(
+      1.35rem, /* ~22px minimum */
+      calc(0.95vw + 0.95vh), /* Conservative scaling on 4K desktop */
+      2.75rem /* 44px maximum */
+    ) !important;
+    width: clamp(
+      1.35rem,
+      calc(0.95vw + 0.95vh),
+      2.75rem
+    ) !important;
+    height: clamp(
+      1.35rem,
+      calc(0.95vw + 0.95vh),
+      2.75rem
+    ) !important;
+  }
+}
+
+/* Refined sizing for very large desktop monitors (5K/6K/8K monitors) */
+@media (min-width: 5120px) and (max-width: 7680px) {
+  .responsive-smaller-icon-font-size,
+  svg.responsive-smaller-icon-font-size,
+  i.responsive-smaller-icon-font-size,
+  .icon.responsive-smaller-icon-font-size,
+  svg[class*="lucide"].responsive-smaller-icon-font-size,
+  svg[data-lucide].responsive-smaller-icon-font-size,
+  svg[data-lucide-icon].responsive-smaller-icon-font-size {
+    font-size: clamp(
+      1.75rem,
+      calc(1.2vw + 1.1vh), /* Less aggressive than TV mode */
+      3.5rem
+    ) !important;
+    width: clamp(
+      1.75rem,
+      calc(1.2vw + 1.1vh),
+      3.5rem
+    ) !important;
+    height: clamp(
+      1.75rem,
+      calc(1.2vw + 1.1vh),
+      3.5rem
+    ) !important;
+  }
+}
+
+/* Enhanced sizing for huge displays (8K TVs and larger) */
+@media (min-width: 7680px) {
+  .responsive-smaller-icon-font-size,
+  svg.responsive-smaller-icon-font-size,
+  i.responsive-smaller-icon-font-size,
+  .icon.responsive-smaller-icon-font-size,
+  svg[class*="lucide"].responsive-smaller-icon-font-size,
+  svg[data-lucide].responsive-smaller-icon-font-size,
+  svg[data-lucide-icon].responsive-smaller-icon-font-size {
+    font-size: clamp(
+      2rem,
+      calc(1.3vw + 1.2vh),
+      4rem
+    ) !important;
+    width: clamp(
+      2rem,
+      calc(1.3vw + 1.2vh),
+      4rem
+    ) !important;
+    height: clamp(
+      2rem,
+      calc(1.3vw + 1.2vh),
+      4rem
+    ) !important;
+  }
+}
+
+/* Height-aware responsive smaller text sizing - matches smaller icon sizes but for text */
+.responsive-smaller-text-font-size {
+  /* Base sizing that matches responsive-smaller-icon-font-size but for text */
+  font-size: clamp(
+    var(--responsive-smaller-text-min),
+    var(--responsive-smaller-text-scale),
+    var(--responsive-smaller-text-max)
+  );
+  line-height: 1.35; /* Prevent line overlap on extreme aspect ratios/zoom */
+}
+
+/* Additional specificity for text elements */
+span.responsive-smaller-text-font-size,
+p.responsive-smaller-text-font-size,
+div.responsive-smaller-text-font-size {
+  font-size: clamp(
+    var(--responsive-smaller-text-min),
+    var(--responsive-smaller-text-scale),
+    var(--responsive-smaller-text-max)
+  );
+  line-height: 1.35;
+}
+
+/* For very wide but short screens (aspect ratio > 2.5), cap the size more aggressively */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 2.5/1) and (max-width: 2560px) {
+  .responsive-smaller-text-font-size,
+  span.responsive-smaller-text-font-size,
+  p.responsive-smaller-text-font-size,
+  div.responsive-smaller-text-font-size {
+    font-size: clamp(
+      var(--responsive-smaller-text-min),
+      calc(0.5vw + 0.7vh), /* Less weight on width scaling - reduced */
+      1.25rem /* 20px maximum - slightly smaller */
+    );
+    line-height: 1.35;
+  }
+}
+
+/* Additional refinement for extremely wide screens */
+/* But only if the screen is not very large (to preserve TV sizing) */
+@media (min-aspect-ratio: 3/1) and (max-width: 2560px) {
+  .responsive-smaller-text-font-size,
+  span.responsive-smaller-text-font-size,
+  p.responsive-smaller-text-font-size,
+  div.responsive-smaller-text-font-size {
+    font-size: clamp(
+      var(--responsive-smaller-text-min),
+      calc(0.4vw + 0.7vh), /* Reduced scaling */
+      1.125rem /* 18px maximum - slightly smaller */
+    );
+    line-height: 1.35;
+  }
+}
+
+/* Refined sizing for desktop monitors (2560px - 3840px range) */
+@media (min-width: 2560px) and (max-width: 3840px) {
+  .responsive-smaller-text-font-size,
+  span.responsive-smaller-text-font-size,
+  p.responsive-smaller-text-font-size,
+  div.responsive-smaller-text-font-size {
+    font-size: clamp(
+      0.875rem, /* 14px minimum - standard desktop size */
+      calc(0.5vw + 0.5vh), /* More conservative scaling */
+      1.5rem /* 24px maximum - reasonable for desktop */
+    );
+    line-height: 1.35;
+  }
+}
+
+/* Refined sizing for 4K desktop monitors (3840px - 5120px range) */
+@media (min-width: 3840px) and (max-width: 5120px) {
+  .responsive-smaller-text-font-size,
+  span.responsive-smaller-text-font-size,
+  p.responsive-smaller-text-font-size,
+  div.responsive-smaller-text-font-size {
+    font-size: clamp(
+      0.95rem, /* ~15px minimum */
+      calc(0.6vw + 0.6vh), /* Conservative scaling on 4K desktop */
+      1.75rem /* 28px maximum */
+    );
+    line-height: 1.35;
+  }
+}
+
+/* Refined sizing for very large desktop monitors (5K/6K/8K monitors) */
+@media (min-width: 5120px) and (max-width: 7680px) {
+  .responsive-smaller-text-font-size,
+  span.responsive-smaller-text-font-size,
+  p.responsive-smaller-text-font-size,
+  div.responsive-smaller-text-font-size {
+    font-size: clamp(
+      1.125rem,
+      calc(0.7vw + 0.7vh), /* Less aggressive than TV mode */
+      2.25rem
+    );
+    line-height: 1.35;
+  }
+}
+
+/* Enhanced sizing for huge displays (8K TVs and larger) */
+@media (min-width: 7680px) {
+  .responsive-smaller-text-font-size,
+  span.responsive-smaller-text-font-size,
+  p.responsive-smaller-text-font-size,
+  div.responsive-smaller-text-font-size {
+    font-size: clamp(
+      1.25rem,
+      calc(0.75vw + 0.75vh),
+      2.625rem
+    );
+    line-height: 1.35;
+  }
+}
+
+/* Toast-specific responsive text sizing that integrates with the existing system */
+.toast-text-responsive {
+  font-size: clamp(
+    var(--responsive-toast-min),
+    var(--responsive-toast-scale),
+    var(--responsive-toast-max)
+  );
+  line-height: 1.4;
+}
+
+/* Refined toast text sizing for desktop monitors (2560px - 3840px range) */
+@media (min-width: 2560px) and (max-width: 3840px) {
+  .toast-text-responsive {
+    font-size: clamp(
+      0.875rem, /* 14px minimum - standard desktop size */
+      calc(0.6vw + 0.6vh), /* More conservative scaling */
+      1.25rem /* 20px maximum - reasonable for desktop */
+    );
+    line-height: 1.4;
+  }
+}
+
+/* Refined toast text sizing for 4K desktop monitors (3840px - 5120px range) */
+@media (min-width: 3840px) and (max-width: 5120px) {
+  .toast-text-responsive {
+    font-size: clamp(
+      0.95rem, /* ~15px minimum */
+      calc(0.75vw + 0.75vh), /* Conservative scaling on 4K desktop */
+      1.6rem /* ~26px maximum */
+    );
+    line-height: 1.3;
+  }
+}
+
+/* Refined toast text sizing for very large desktop monitors (5K/6K/8K monitors) */
+@media (min-width: 5120px) and (max-width: 7680px) {
+  .toast-text-responsive {
+    font-size: clamp(
+      1.25rem,
+      calc(0.9vw + 0.9vh), /* Less aggressive than TV mode */
+      2rem
+    );
+    line-height: 1.3;
+  }
+}
+
+/* Enhanced toast text sizing for huge displays (8K TVs and larger) */
+@media (min-width: 7680px) {
+  .toast-text-responsive {
+    font-size: clamp(
+      1.35rem,
+      calc(1.2vw + 1.2vh),
+      2.5rem
+    );
+    line-height: 1.3;
+  }
+}

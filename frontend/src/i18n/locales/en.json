@@ -1,0 +1,198 @@
+{
+  "common": {
+    "generate": "Generate",
+    "loading": "Loading...",
+    "error": "Error",
+    "cancel": "Cancel",
+    "cancelGeneration": "Cancel generation",
+    "confirm": "Confirm",
+    "discard": "Discard",
+    "upload": "Upload",
+    "download": "Download",
+    "close": "Close",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search"
+  },
+  "forms": {
+    "mwpPlaceholder": "Enter your math word problem…",
+    "formulaPlaceholder": "2+2 (e.g. instead of 2x2 as structure)",
+    "hintPlaceholder": "Does not look as expected? Then add more hints about the relationships between the visual elements inside here ...",
+    "mwpRequired": "Provide a math word problem.",
+    "mwpTooLong": "Math word problem is too long (max {{max}} characters).",
+    "dslRequired": "Empty Visual Language provided.",
+    "dslTooLong": "Visual Language is too long (max {{max}} characters).",
+    "formulaTooLong": "Formula is too long (max {{max}} characters).",
+    "hintTooLong": "Hint is too long (max {{max}} characters).",
+    "messageTooLong": "Message is too long (max {{max}} characters).",
+    "generateButton": "Generate",
+    "regenerateButton": "Regenerate",
+    "visualLanguageTitle": "Visual Language",
+    "mwpLabel": "Math word problem:",
+    "formulaLabel": "Optional formula:",
+    "hintLabel": "Optional hints:"
+  },
+  "visualization": {
+    "formal": "Formal",
+    "intuitive": "Intuitive",
+    "formalVisualization": "Formal visualization",
+    "intuitiveVisualization": "Intuitive visualization",
+    "parseError": "Parse Error",
+    "parseErrorMessage": "Could not parse Visual Language.",
+    "syntaxError": "Visual Language syntax error. Please check your input.",
+    "generationError": "Could not generate visualization. Retrying might help.",
+    "formalError": "Could not generate formal visualization. Retrying might help.",
+    "intuitiveError": "Could not generate intuitive visualization. Retrying might help.",
+    "tabs": {
+      "formalVisual": "Formal Visual",
+      "intuitiveVisual": "Intuitive Visual",
+      "missingSVG": "Missing SVG"
+    }
+  },
+  "errors": {
+    "networkError": "Network error: Could not connect to server",
+    "unknownError": "An unknown error occurred",
+    "unexpectedError": "An unexpected error occurred",
+    "apiError": "Did not get Visual Language from AI. Please try again.",
+    "validationError": "Validation error"
+  },
+  "svg": {
+    "missingEntities": "Select entity with missing SVG to upload or generate an icon for:",
+    "missingFileTitle": "Missing SVG File",
+    "missingDescription": "SVG file required for visual generation is missing from the dataset. Attempted to find and pick the closest matching representation in dataset instead.",
+    "uploading": "Uploading...",
+    "generating": "Generating icon...",
+    "selectEntity": "Select the missing entity to upload or generate an icon:",
+    "confirmGenerated": "Confirm Generated",
+    "discardGenerated": "Discard Generated",
+    "dragAndDrop": "Drag and drop your SVG file here",
+    "findOnline": "Find SVGs online:",
+    "generatePopup": {
+      "generating": "Generating \"{{entityType}}\" icon...",
+      "confirmInstruction": "Double-click / 'Enter' to confirm"
+    },
+    "uploadPopup": {
+      "selectFileAndName": "Please select a file and enter a name",
+      "chooseFile": "Choose SVG file",
+      "enterName": "Enter name",
+      "viewInNewTab": "View {{filename}} in new tab"
+    },
+    "searchPopup": {
+      "searchError": "Failed to search SVG files",
+      "selectError": "Failed to select file",
+      "searching": "Searching..."
+    },
+    "allFilesUploaded": "All missing files have been uploaded!",
+    "fileUploadedSuccessfully": "SVG file uploaded successfully",
+    "uploadSucceededRegenerationFailed": "Upload succeeded but regeneration failed",
+    "failedToRegenerateVisualizations": "Failed to regenerate visualizations",
+    "uploadFailed": "Upload failed",
+    "connectionError": "Connection error",
+    "uploadTimeout": "Upload timeout",
+    "fileTooLarge": "File too large",
+    "fileTooLargeMaxSize": "File too large. Maximum size is 5MB.",
+    "securityCheckFailed": "Security check failed",
+    "pleaseSelectSVGFile": "Please select an SVG file",
+    "processing": "Processing...",
+    "generationCancelled": "Generation cancelled",
+    "generationFailed": "Generation failed",
+    "addingToDataset": "Adding SVG to dataset...",
+    "generatedAndAddedToDataset": "SVG generated and added to dataset!",
+    "generationSucceededRegenerationFailed": "Generation succeeded but regeneration failed",
+    "failedToAddSVG": "Failed to add SVG",
+    "noDSLOrPathContext": "No DSL or path context available",
+    "updatingAndRegenerating": "Updating SVG and regenerating visuals...",
+    "successfullyUpdatedSVG": "Successfully updated SVG",
+    "failedToUpdateSVG": "Failed to update SVG"
+  },
+  "language": {
+    "select": "Select Language",
+    "english": "English",
+    "german": "German"
+  },
+  "theme": {
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "app": {
+    "subtitle": "Visualizing Math Word Problems in a Pedagogically Meaningful way through AI",
+    "noVisualLanguageForRegeneration": "No visual language available for regeneration",
+    "regeneratingVisualizations": "Regenerating visualizations...",
+    "visualizationsGeneratedSuccessfully": "Visualizations generated successfully",
+    "anotherSVGFileStillMissing": "Another SVG file is still missing",
+    "missing": "Missing: {{entity}}",
+    "generationFailed": "Generation failed",
+    "unableToGenerateVisualizations": "Unable to generate visualizations",
+    "failedToRegenerateVisualizations": "Failed to regenerate visualizations"
+  },
+  "popups": {
+    "name": {
+      "placeholder": "Name",
+      "updated": "Name updated to \"{{value}}\"",
+      "deleted": "Name deleted",
+      "updateError": "Failed to update name. Please try again."
+    },
+    "quantity": {
+      "placeholder": "Quantity",
+      "positiveInteger": "Please enter a positive integer",
+      "invalidInteger": "Please enter a valid positive integer",
+      "updated": "Entity quantity updated to {{quantity}}",
+      "updateError": "Failed to update entity quantity. Please try again."
+    }
+  },
+  "download": {
+    "preparing": "Preparing {{format}} download...",
+    "success": "{{format}} file downloaded successfully!",
+    "savedToFolder": "{{title}} has been saved to your downloads folder.",
+    "error": "Failed to download {{format}} file",
+    "unexpectedError": "An unexpected error occurred."
+  },
+  "landing": {
+    "roleQuestion": "What are you?",
+    "modeQuestion": "Please select mode:",
+    "student": "Student",
+    "teacher": "Teacher"
+  },
+  "tutor": {
+    "enterMwpLabel": "Start by entering your math word problem",
+    "enterMwpPlaceholder": "Type your math word problem...",
+    "startSession": "Start tutor session",
+    "send": "Send",
+    "sendPlaceholder": "Reply to the tutor...",
+    "sessionNotFound": "Session not found. Please restart.",
+    "visualOpenLarge": "Open visualization in large view",
+    "visualClosePreview": "Close visualization preview",
+    "voiceStart": "Voice input",
+    "voiceStop": "Stop",
+    "voiceError": "Voice input failed. Please try again.",
+    "streamingError": "Streaming failed. Please try again.",
+    "speechOn": "Read-aloud on",
+    "speechOff": "Read-aloud off",
+    "speechNotSupported": "Voice output not supported",
+    "speechError": "Could not read the answer aloud. Please try again.",
+    "initialMessage": "Hello! I'm here to help you with your math word problems. Please share a problem you'd like to work on."
+  },
+  "chatgpt": {
+    "title": "ChatGPT",
+    "startConversation": "Start a conversation with ChatGPT...",
+    "inputPlaceholder": "Type your message to ChatGPT...",
+    "downloadImage": "Download image",
+    "imageAlt": "Image {{number}}",
+    "failedToFetchImage": "Failed to fetch image",
+    "failedToStreamResponse": "Failed to stream ChatGPT response",
+    "streamingNotSupported": "Streaming not supported in this browser.",
+    "failedToStartSession": "Failed to start ChatGPT session",
+    "failedToFetchImageViaProxy": "Failed to fetch image via proxy",
+    "failedToStartSessionError": "Failed to start ChatGPT session.",
+    "missingSessionId": "Missing session id.",
+    "pleaseProvideMessage": "Please provide a message.",
+    "messageTooLong": "Message is too long (max {{max}} characters).",
+    "sessionNotFoundOrExpired": "Session not found or expired.",
+    "sessionNotFound": "Session not found.",
+    "missingImageUrl": "Missing image URL.",
+    "failedToFetchImageError": "Failed to fetch image: {{error}}",
+    "failedToProxyImage": "Failed to proxy image."
+  }
+}
+

@@ -1,0 +1,81 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Frontend build artifacts (will be built in Docker)
+frontend/dist/
+frontend/.vite/
+
+# Environment files (all directories)
+**/.env
+**/.env.*
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Storage (will be mounted or created at runtime)
+# Exclude specific storage subdirectories, but include SVG dataset (needed for image generation)
+backend/storage/analytics/
+backend/storage/output/
+backend/storage/temp_svgs/
+backend/storage/models/
+# Note: backend/storage/datasets/svg_dataset/ is NOT excluded - it's needed in the image
+frontend/dist/
+
+# Test files
+tests/
+*.test.py
+*_test.py
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+
+# User study
+user_study/
+
+# Images
+images/
+
+# Config templates (not needed in image)
+backend/config_templates/
+backend/scripts/
+
+# Backend specific
+backend/.dockerignore
+

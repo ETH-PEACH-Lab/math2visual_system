@@ -1,0 +1,52 @@
+# JuiceFS Configuration Template for Math2Visual
+# Copy this file to .env and fill in your actual values
+
+# PostgreSQL Database Configuration for JuiceFS Metadata
+# Format: postgres://username:password@host:port/database
+JUICEFS_METADATA_URL=postgres://juicefs_user:your_secure_password@localhost:5432/juicefs_metadata
+
+# JuiceFS Filesystem Configuration
+JUICEFS_FILESYSTEM_NAME=math2visual-fs
+
+# Mount Point Options:
+# Option 1 (Default): System-wide mount (requires sudo during installation)
+JUICEFS_MOUNT_POINT=/mnt/juicefs
+# Option 2 (No-sudo): User-owned mount point (uncomment to use)
+#JUICEFS_MOUNT_POINT=$HOME/juicefs
+
+JUICEFS_CACHE_DIR=/var/cache/juicefs
+
+# Storage Backend Configuration
+# Options: file, s3, oss, cos, obs, jfs, etc.
+JUICEFS_STORAGE_TYPE=file
+
+# Storage Bucket/Path
+# For file storage: local directory path
+# For cloud storage: bucket name
+JUICEFS_BUCKET=/var/lib/juicefs
+
+# Optional: Storage Credentials (for cloud storage)
+# JUICEFS_ACCESS_KEY=your_access_key
+# JUICEFS_SECRET_KEY=your_secret_key
+# JUICEFS_REGION=your_region
+
+# Math2Visual Application Configuration
+SVG_STORAGE_MODE=juicefs
+
+# SVG Dataset Path (should match your chosen mount point above)
+SVG_DATASET_PATH=/mnt/juicefs/svg_dataset
+# If using user mount: SVG_DATASET_PATH=$HOME/juicefs/svg_dataset
+SVG_CACHE_SIZE=100
+
+# Performance Tuning (Optional)
+JUICEFS_CACHE_SIZE=1024
+JUICEFS_PREFETCH=1
+JUICEFS_WRITEBACK=true
+
+# Logging (Optional)
+JUICEFS_LOG_LEVEL=info
+JUICEFS_LOG_DIR=/var/log/juicefs
+
+# Backup Configuration (Optional)
+POSTGRES_BACKUP_DIR=/var/backups/juicefs
+POSTGRES_BACKUP_RETENTION_DAYS=30

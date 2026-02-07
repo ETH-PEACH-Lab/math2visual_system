@@ -1,0 +1,262 @@
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-12-09 15:12+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: app/api/middleware/error_handlers.py:16
+msgid "Not found"
+msgstr ""
+
+#: app/api/middleware/error_handlers.py:20
+msgid "Bad request"
+msgstr ""
+
+#: app/api/middleware/error_handlers.py:25
+msgid "Internal server error"
+msgstr ""
+
+#: app/api/middleware/error_handlers.py:29
+msgid "Request too large"
+msgstr ""
+
+#: app/api/routes/generation.py:64 app/api/routes/generation.py:235
+#: app/api/routes/generation.py:260
+msgid "Empty Visual Language provided."
+msgstr ""
+
+#: app/api/routes/generation.py:78 app/api/routes/tutor.py:52
+msgid "Provide a math word problem (MWP)."
+msgstr ""
+
+#: app/api/routes/generation.py:85 app/api/routes/tutor.py:60
+msgid "Did not get Visual Language from AI. Please try again."
+msgstr ""
+
+#: app/api/routes/generation.py:108 app/api/routes/generation.py:200
+msgid "Visual Language parse error."
+msgstr ""
+
+#: app/api/routes/generation.py:126
+#, python-format
+msgid "Could not generate formal visualization: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:128
+msgid "Could not generate formal visualization. Retrying might help."
+msgstr ""
+
+#: app/api/routes/generation.py:130
+#, python-format
+msgid "Formal generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:132
+#, python-format
+msgid "Unexpected formal generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:148
+#, python-format
+msgid "Could not generate intuitive visualization: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:150
+msgid "Could not generate intuitive visualization. Retrying might help."
+msgstr ""
+
+#: app/api/routes/generation.py:152
+#, python-format
+msgid "Intuitive generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:154
+#, python-format
+msgid "Unexpected intuitive generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:213
+#, python-format
+msgid "Could not generate %(variant)s visualization: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:215
+#, python-format
+msgid "Could not generate %(variant)s visualization. Retrying might help."
+msgstr ""
+
+#: app/api/routes/generation.py:217
+#, python-format
+msgid "%(variant)s generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/generation.py:219
+#, python-format
+msgid "Unexpected %(variant)s generation error: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:50 app/api/routes/svg_dataset.py:256
+msgid "SVG dataset directory not found"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:73
+msgid "Permission denied accessing SVG dataset"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:109
+#, python-format
+msgid "Search failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:165
+msgid "Request too large (max 10MB)"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:169
+msgid "No file uploaded"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:175
+msgid "Expected filename not provided"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:178
+msgid "No file selected"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:206
+#, python-format
+msgid ""
+"File already exists or has been added by another user in the meantime: "
+"%(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:228
+#, python-format
+msgid "SVG file uploaded successfully: %(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:233
+#, python-format
+msgid "Upload failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:251
+msgid "Name parameter is required"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:269
+#, python-format
+msgid "Check failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:287
+msgid "Only SVG files are allowed"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:298
+msgid "File not found"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:303
+msgid "File not accessible"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:309
+msgid "Empty file"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:323
+#, python-format
+msgid "Failed to serve file: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:344
+msgid "Entity type is required"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:353
+msgid "Failed to generate SVG"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:384
+#, python-format
+msgid "Generated SVG validation failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:397
+#, python-format
+msgid "SVG icon generated successfully: %(entity_type)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:404
+#, python-format
+msgid "Generation failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:426
+msgid "Temporary filename is required"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:434
+msgid "Invalid filename"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:442
+msgid "Temporary file not found"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:453
+#, python-format
+msgid "File already exists in dataset: %(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:464
+#, python-format
+msgid "SVG added to dataset: %(filename)s"
+msgstr ""
+
+#: app/api/routes/svg_dataset.py:471
+#, python-format
+msgid "Confirmation of temporary SVG failed: %(error)s"
+msgstr ""
+
+#: app/api/routes/system.py:63
+#, python-format
+msgid "Failed to get storage status: %(error)s"
+msgstr ""
+
+#: app/api/routes/system.py:88
+#, python-format
+msgid "Failed to get antivirus status: %(error)s"
+msgstr ""
+
+#: app/api/routes/tutor.py:28
+msgid "Missing DSL scope for visual request."
+msgstr ""
+
+#: app/api/routes/tutor.py:85
+msgid "Missing session id."
+msgstr ""
+
+#: app/api/routes/tutor.py:87
+msgid "Please provide a message."
+msgstr ""
+
+#: app/api/routes/tutor.py:91
+msgid "Session not found or expired."
+msgstr ""
+
