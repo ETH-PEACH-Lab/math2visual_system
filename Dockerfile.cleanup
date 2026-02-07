@@ -1,0 +1,56 @@
+# Dockerfile for Math2Visual Cleanup Service
+# This is a minimal image containing only what's needed to run the cleanup cron job
+
+FROM python:3.12-slim
+
+# Set environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Install minimal system dependencies (cron for scheduling, procps for process management)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    cron \
+    procps \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create app user for security
+RUN useradd -m -u 1000 appuser && \
+    mkdir -p /app /app/storage/output /app/storage/temp_svgs && \
+    chown -R appuser:appuser /app
+
+# Set working directory
+WORKDIR /app
+
+# Copy minimal requirements for cleanup service
+COPY --chown=appuser:appuser backend/requirements-cleanup.txt .
+
+# Install Python dependencies as appuser
+USER appuser
+RUN pip install --user --no-cache-dir -r requirements-cleanup.txt
+
+# Add user's local bin to PATH
+ENV PATH=/home/appuser/.local/bin:$PATH
+
+# Switch back to root for remaining operations
+USER root
+
+# Copy only the necessary backend code (scripts and config)
+# We don't need the full backend application - just the cleanup script and its dependencies
+COPY --chown=appuser:appuser backend/scripts/ /app/scripts/
+COPY --chown=appuser:appuser backend/config/ /app/config/
+COPY --chown=appuser:appuser backend/app/utils/ /app/app/utils/
+COPY --chown=appuser:appuser backend/app/models/ /app/app/models/
+COPY --chown=appuser:appuser backend/app/services/tutor/session_storage.py /app/app/services/tutor/session_storage.py
+
+# Create __init__.py files for Python package structure
+RUN touch /app/app/__init__.py /app/app/services/__init__.py /app/app/services/tutor/__init__.py
+
+# Ensure storage directories have correct permissions for appuser
+RUN chown -R appuser:appuser /app/storage && \
+    chmod -R 755 /app/storage
+
+# The cleanup service will be configured and started via docker-compose command
+# No CMD needed here as docker-compose will override it

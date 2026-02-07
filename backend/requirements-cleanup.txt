@@ -1,0 +1,9 @@
+# Minimal requirements for the cleanup service
+# Only includes dependencies needed for cleanup_temp_files.py script
+
+# Database access (for cleaning up expired tutor sessions)
+SQLAlchemy==2.0.43
+psycopg2-binary==2.9.11
+
+# Environment variables
+python-dotenv==1.0.1

@@ -20,7 +20,7 @@ ENV VITE_ENABLE_ANALYTICS=${VITE_ENABLE_ANALYTICS}
 # Build for production
 RUN npm run build
 
-# Stage 2: Backend with Nginx
+# Stage 2: Backend only (no Nginx - Peach server provides its own)
 FROM python:3.12-slim AS backend
 
 # Set environment variables
@@ -29,7 +29,7 @@ ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# Install system dependencies including Nginx
+# Install system dependencies (removed nginx)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
@@ -38,7 +38,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxslt1-dev \
     pkg-config \
     cmake \
-    nginx \
     git \
     && rm -rf /var/lib/apt/lists/*
 
@@ -68,6 +67,10 @@ USER root
 # Copy backend application code
 COPY --chown=appuser:appuser backend/ .
 
+# Copy built frontend from builder stage to Flask static directory
+# Flask will serve these static files
+COPY --from=frontend-builder --chown=appuser:appuser /app/frontend/dist /app/static
+
 # Note: SVG dataset is NOT copied into the image
 # It will be downloaded from GitHub on first run if not present in the volume mount
 
@@ -75,24 +78,18 @@ COPY --chown=appuser:appuser backend/ .
 RUN chown -R appuser:appuser /app/storage && \
     chmod -R 755 /app/storage
 
-# Copy built frontend to Nginx html directory
-COPY --from=frontend-builder /app/frontend/dist /usr/share/nginx/html
-
-# Copy Nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 # Copy entrypoint script and dataset download script
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY docker-entrypoint-peach.sh /docker-entrypoint.sh
 COPY ensure-dataset.sh /ensure-dataset.sh
 RUN chmod +x /docker-entrypoint.sh /ensure-dataset.sh
 
-# Expose ports 80 (HTTP) and 443 (HTTPS)
-EXPOSE 80 443
+# Expose port 5000 (Gunicorn - Peach server will proxy this)
+EXPOSE 5000
 
-# Health check (checks if Nginx is responding)
+# Health check (checks if Gunicorn is responding)
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python3 -c "import socket; s = socket.socket(); s.settimeout(2); result = s.connect_ex(('127.0.0.1', 80)); s.close(); exit(0 if result == 0 else 1)"
+    CMD python3 -c "import socket; s = socket.socket(); s.settimeout(2); result = s.connect_ex(('127.0.0.1', 5000)); s.close(); exit(0 if result == 0 else 1)"
 
-# Default command (starts both Gunicorn and Nginx)
+# Default command (starts Gunicorn only)
 CMD ["/docker-entrypoint.sh"]
 
