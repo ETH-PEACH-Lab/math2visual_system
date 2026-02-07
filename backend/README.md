@@ -90,6 +90,7 @@ backend/
 ├── babel.cfg                               # Babel extraction configuration
 ├── messages.pot                            # Extracted message template (Babel)
 ├── requirements.txt                        # Python dependencies
+├── requirements-cleanup.txt                # Dependencies for cleanup script
 ├── storage/                                # Local storage directory
 │   ├── datasets/svg_dataset/               # SVG entity library (1,549 files)
 │   ├── models/                             # ML model checkpoints
