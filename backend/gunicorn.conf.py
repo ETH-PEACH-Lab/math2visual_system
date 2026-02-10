@@ -54,6 +54,11 @@ def pre_fork(server, worker):
 
 def post_fork(server, worker):
     """Called just after a worker has been forked."""
+    # Monkey patch for gevent BEFORE any other work
+    # This prevents the MonkeyPatchWarning about SSL being imported before patching
+    from gevent import monkey
+    monkey.patch_all()
+    
     server.log.info("Worker spawned (pid: %s)", worker.pid)
 
 def worker_abort(worker):
