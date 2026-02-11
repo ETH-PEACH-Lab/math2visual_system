@@ -29,7 +29,12 @@ COPY --chown=appuser:appuser backend/requirements-cleanup.txt .
 
 # Install Python dependencies as appuser
 USER appuser
-RUN pip install --user --no-cache-dir --timeout=300 --retries=5 -r requirements-cleanup.txt
+# Install packages one by one to handle slow/unstable network connections
+# This allows Docker to cache individual packages and makes retries faster
+# Using default-timeout for better handling of slow connections
+RUN pip install --user --no-cache-dir --default-timeout=600 --retries=10 SQLAlchemy==2.0.43
+RUN pip install --user --no-cache-dir --default-timeout=600 --retries=10 psycopg2-binary==2.9.11
+RUN pip install --user --no-cache-dir --default-timeout=600 --retries=10 python-dotenv==1.0.1
 
 # Add user's local bin to PATH
 ENV PATH=/home/appuser/.local/bin:$PATH
