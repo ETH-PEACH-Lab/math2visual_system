@@ -29,7 +29,7 @@ COPY --chown=appuser:appuser backend/requirements-cleanup.txt .
 
 # Install Python dependencies as appuser
 USER appuser
-RUN pip install --user --no-cache-dir -r requirements-cleanup.txt
+RUN pip install --user --no-cache-dir --timeout=300 --retries=5 -r requirements-cleanup.txt
 
 # Add user's local bin to PATH
 ENV PATH=/home/appuser/.local/bin:$PATH
