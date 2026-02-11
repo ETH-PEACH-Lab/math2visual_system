@@ -40,7 +40,7 @@ USER root
 # Copy only the necessary backend code (scripts and config)
 # We don't need the full backend application - just the cleanup script and its dependencies
 COPY --chown=appuser:appuser backend/scripts/ /app/scripts/
-COPY --chown=appuser:appuser backend/config/ /app/config/
+COPY --chown=appuser:appuser backend/app/config/ /app/app/config/
 COPY --chown=appuser:appuser backend/app/utils/ /app/app/utils/
 COPY --chown=appuser:appuser backend/app/models/ /app/app/models/
 COPY --chown=appuser:appuser backend/app/services/tutor/session_storage.py /app/app/services/tutor/session_storage.py
