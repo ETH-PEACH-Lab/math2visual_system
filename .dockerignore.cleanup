@@ -1,0 +1,85 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+!README.md
+docs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Frontend (not needed for cleanup service)
+frontend/
+
+# Environment files (all directories)
+**/.env
+**/.env.*
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Storage (will be mounted at runtime)
+backend/storage/
+
+# Test files
+tests/
+*.test.py
+*_test.py
+**/__tests__/
+**/*.test.ts
+**/*.test.tsx
+
+# User study
+user_study/
+
+# Images
+images/
+
+# Config templates
+backend/config_templates/
+
+# Backend specific (but keep scripts for cleanup service)
+backend/.dockerignore
+
+# Exclude most of backend/app except what cleanup needs
+backend/app/api/
+backend/app/translations/
+backend/tests/
+backend/docs/
+backend/babel.cfg
+backend/messages.pot
+backend/math2visual.yml
+backend/wsgi.py
+backend/app.py
+backend/gunicorn.conf.py
+backend/Dockerfile

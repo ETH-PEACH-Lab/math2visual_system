@@ -74,7 +74,9 @@ images/
 
 # Config templates (not needed in image)
 backend/config_templates/
-backend/scripts/
+# Note: backend/scripts/ is needed for the cleanup service (Dockerfile.cleanup)
+# If you need to exclude scripts for other builds, use a more specific approach
+# backend/scripts/
 
 # Backend specific
 backend/.dockerignore
