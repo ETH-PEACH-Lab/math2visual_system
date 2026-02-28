@@ -15,12 +15,16 @@ services:
       # This allows user uploads, analytics, and datasets to persist on the Peach server
       # On Peach server, data is stored in: /var/lib/peachlab/data/math2visual
       - ${PEACHLAB_DATA_DIR:-./backend/storage}:/app/storage
+    env_file:
+      - .env
+    networks:
+      - default-isg
     environment:
       # Peach server nginx proxy configuration
       - VIRTUAL_HOST=${VIRTUAL_HOST:-math2visual.peachhub.inf.ethz.ch}
       - VIRTUAL_PORT=5000
       - LETSENCRYPT_HOST=${LETSENCRYPT_HOST:-math2visual.peachhub.inf.ethz.ch}
-      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-ruhstals@student.ethz.ch}
+      - LETSENCRYPT_EMAIL=${LETSENCRYPT_EMAIL:-junling.wang@ai.ethz.ch}
       # API keys
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - GEMINI_API_KEY=${GEMINI_API_KEY:-}
@@ -44,6 +48,8 @@ services:
       - CORS_ORIGINS=${CORS_ORIGINS:-}
       - FRONTEND_URL=${FRONTEND_URL:-}
     restart: unless-stopped
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
     depends_on:
       postgres:
         condition: service_healthy
@@ -65,6 +71,8 @@ services:
     volumes:
       # Persist virus database to avoid re-downloading on every restart
       - clamav-db:/var/lib/clamav
+    networks:
+      - default-isg
     environment:
       # Allow reasonably large files/streams for scanning
       - CLAMD_CONF_MaxFileSize=50M
@@ -87,6 +95,10 @@ services:
     volumes:
       # Persist database data across container restarts
       - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - default-isg
     environment:
       - POSTGRES_DB=math2visual_analytics
       - POSTGRES_USER=math2visual_user
@@ -117,6 +129,8 @@ services:
     volumes:
       - ${PEACHLAB_DATA_DIR:-./backend/storage}:/app/storage
       - ${PEACHLAB_DATA_DIR:-./cleanup-logs}:/var/log
+    env_file:
+      - .env
     environment:
       - CLEANUP_OUTPUT_AGE_HOURS=24
       - CLEANUP_TEMP_SVG_AGE_HOURS=1
@@ -155,3 +169,6 @@ volumes:
   # PostgreSQL data - persists analytics database across container restarts
   postgres-data:
 
+networks:
+  default-isg:
+    external: true
