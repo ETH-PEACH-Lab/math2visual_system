@@ -72,9 +72,9 @@ if [ ! -f /home/appuser/.local/bin/gunicorn ]; then
     exit 1
 fi
 
-# Start Gunicorn in the background first to check if it starts successfully
+# Start Gunicorn via launcher (monkey-patches gevent before any imports to avoid MonkeyPatchWarning)
 echo "Starting gunicorn as appuser..."
-su appuser -s /bin/bash -c "cd /app && /home/appuser/.local/bin/gunicorn --config gunicorn.conf.py wsgi:app" 2>&1 &
+su appuser -s /bin/bash -c "cd /app && python3 run_gunicorn.py" 2>&1 &
 GUNICORN_PID=$!
 
 # Function to handle shutdown
