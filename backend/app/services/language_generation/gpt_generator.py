@@ -337,8 +337,11 @@ Note: Dies ist ein komplexeres, mehrstufiges Beispiel, das du Schritt für Schri
     },
 }
 
+MAX_RETRIES = 3
+
+
 def generate_response(prompt, model):
-    while True:
+    for attempt in range(MAX_RETRIES):
         try:
             completion = client.chat.completions.create(
                 model=model,
@@ -346,8 +349,13 @@ def generate_response(prompt, model):
              )
             return completion.choices[0].message.content
         except Exception as e:
-            logger.warning(f"Error {e} occurred while generating response. Retrying in 2 seconds...")
-            time.sleep(2)
+            if attempt < MAX_RETRIES - 1:
+                logger.warning(f"Error {e} occurred while generating response. Retrying in 2 seconds...")
+                time.sleep(2)
+            else:
+                raise RuntimeError(
+                    f"Failed to generate response after {MAX_RETRIES} attempts. Original error: {e}"
+                ) from e
 
 def generate_prompt(mwp, formula=None, hint=None, language='en'):
     """
