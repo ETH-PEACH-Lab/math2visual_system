@@ -5,7 +5,7 @@ services:
       dockerfile: DockerfilePeach
       args:
         VITE_ENABLE_ANALYTICS: ${VITE_ENABLE_ANALYTICS:-false}
-    image: math2visual:latest
+    image: ghcr.io/eth-peach-lab/math2visual_system/math2visual:latest
     container_name: math2visual
     ports:
       # Expose Gunicorn port for Peach server's nginx proxy
