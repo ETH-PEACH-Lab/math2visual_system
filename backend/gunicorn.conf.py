@@ -1,4 +1,10 @@
 # Gunicorn configuration for Math2Visual backend
+
+# CRITICAL: Monkey patch MUST happen before ANY imports
+# This prevents MonkeyPatchWarning about SSL/urllib3 being imported before patching
+from gevent import monkey
+monkey.patch_all()
+
 import multiprocessing
 import os
 
@@ -54,11 +60,7 @@ def pre_fork(server, worker):
 
 def post_fork(server, worker):
     """Called just after a worker has been forked."""
-    # Monkey patch for gevent BEFORE any other work
-    # This prevents the MonkeyPatchWarning about SSL being imported before patching
-    from gevent import monkey
-    monkey.patch_all()
-    
+    # Monkey patching is now done at the top of this file, before any imports
     server.log.info("Worker spawned (pid: %s)", worker.pid)
 
 def worker_abort(worker):
