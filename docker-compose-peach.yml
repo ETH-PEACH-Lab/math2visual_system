@@ -11,9 +11,10 @@ services:
       # Expose Gunicorn port for Peach server's nginx proxy
       - "5000:5000"
     volumes:
-      # Mount backend storage directory directly for persistence
-      # This allows user uploads and analytics to persist, and uses the existing backend/storage structure
-      - ./backend/storage:/app/storage
+      # Mount Peach server data directory for persistence
+      # This allows user uploads, analytics, and datasets to persist on the Peach server
+      # On Peach server, data is stored in: /var/lib/peachlab/data/math2visual
+      - ${PEACHLAB_DATA_DIR:-./backend/storage}:/app/storage
     environment:
       # Peach server nginx proxy configuration
       - VIRTUAL_HOST=${VIRTUAL_HOST:-math2visual.peachhub.inf.ethz.ch}
@@ -114,8 +115,8 @@ services:
       dockerfile: Dockerfile.cleanup
     container_name: math2visual-cleanup
     volumes:
-      - ./backend/storage:/app/storage
-      - ./cleanup-logs:/var/log
+      - ${PEACHLAB_DATA_DIR:-./backend/storage}:/app/storage
+      - ${PEACHLAB_DATA_DIR:-./cleanup-logs}:/var/log
     environment:
       - CLEANUP_OUTPUT_AGE_HOURS=24
       - CLEANUP_TEMP_SVG_AGE_HOURS=1

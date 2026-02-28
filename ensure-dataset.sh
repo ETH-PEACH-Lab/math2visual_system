@@ -10,8 +10,19 @@ echo "Checking SVG dataset..."
 
 # Check if dataset directory exists and has sufficient files
 if [ -d "$DATASET_DIR" ]; then
+    # Try to count SVG files - suppress permission errors
     svg_count=$(find "$DATASET_DIR" -name "*.svg" 2>/dev/null | wc -l || echo "0")
     echo "  Found $svg_count SVG files in dataset"
+    
+    # Check if we can actually read the directory
+    if [ ! -r "$DATASET_DIR" ]; then
+        echo "⚠️  Dataset directory exists but is not readable (permission issue)"
+        echo "  Dataset location: $DATASET_DIR"
+        echo ""
+        echo "To fix this, run ON THE HOST (e.g.Peach server):"
+        echo "  chmod -R 755 /var/lib/peachlab/data/math2visual"
+        exit 1
+    fi
     
     if [ "$svg_count" -ge "$MIN_SVG_FILES" ]; then
         echo "✓ Dataset is present and valid ($svg_count files)"
